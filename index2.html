@@ -1,0 +1,517 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Reconnect Links Dispatch</title>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;900&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      /* --- DARK THEME TO MATCH index.html AND index3.html --- */
+      :root {
+        --primary-color: #6366f1; /* Indigo-500 for buttons/accents */
+        --primary-light: #818cf8; /* Indigo-400 for hover */
+        --secondary-green: #10b981; /* Emerald-500 for success/add */
+        --danger-color: #ef4444; /* Red-500 for errors */
+        --text-color: #d1d5db; /* Gray-300 for main text */
+        --light-bg: #1f2937; /* Gray-800 for the main container background */
+        --page-bg: #111827; /* Gray-900 for the body background */
+        --border-color: #374151; /* Gray-700 for borders */
+        --header-color: #f3f4f6; /* Gray-100 for headers */
+      }
+
+      body {
+        font-family: "Inter", sans-serif;
+        background: var(--page-bg);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        min-height: 100vh;
+        margin: 0;
+        padding: 20px; /* Padding for mobile safety */
+        box-sizing: border-box;
+      }
+      .container {
+        background: var(--light-bg);
+        padding: 30px;
+        border-radius: 10px;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+        width: 100%;
+        max-width: 500px;
+        border-top: 5px solid var(--primary-color);
+      }
+      h2 {
+        text-align: center;
+        margin-top: 0;
+        margin-bottom: 30px;
+        color: var(--header-color);
+        font-weight: 700;
+        font-size: 1.8em;
+      }
+      .clientRow {
+        background: #2a3545; /* Dark gray background */
+        padding: 18px;
+        border: 1px solid var(--border-color);
+        border-radius: 8px;
+        margin-bottom: 20px;
+        transition: border-color 0.3s, box-shadow 0.3s;
+      }
+      .clientRow:focus-within {
+        border-color: var(--primary-color);
+        box-shadow: 0 0 5px rgba(99, 102, 241, 0.3); /* Indigo focus glow */
+      }
+      label {
+        display: block;
+        font-weight: 600;
+        color: var(--header-color);
+        margin-bottom: 5px;
+        margin-top: 15px;
+        font-size: 0.85em;
+        text-transform: uppercase;
+      }
+      label:first-child {
+        margin-top: 0;
+      }
+      input,
+      select {
+        width: 100%;
+        padding: 12px;
+        border-radius: 6px;
+        border: 1px solid var(--border-color);
+        font-size: 1em;
+        box-sizing: border-box;
+        transition: border-color 0.3s;
+        margin-top: 5px;
+        background-color: var(--page-bg);
+        color: var(--text-color);
+      }
+      input:focus,
+      select:focus {
+        border-color: var(--primary-color);
+        outline: none;
+        box-shadow: 0 0 0 2px rgba(99, 102, 241, 0.15); /* Indigo focus shadow */
+      }
+
+      /* Autofill Select/Button Layout */
+      .autofill-section {
+        margin-bottom: 20px;
+      }
+      .autofill-select {
+        flex: 1 1 auto;
+      }
+
+      /* Button Styling */
+      button {
+        padding: 12px;
+        width: 100%;
+        border: none;
+        color: #fff;
+        font-size: 1em;
+        font-weight: 600;
+        border-radius: 6px;
+        cursor: pointer;
+        margin-top: 10px;
+        transition: background-color 0.3s ease, transform 0.1s;
+      }
+      button:disabled {
+        opacity: 0.6;
+        cursor: not-allowed;
+      }
+
+      /* Primary Button (Send Emails) */
+      button[type="submit"] {
+        background: var(--primary-color);
+        margin-top: 25px;
+      }
+      button[type="submit"]:hover:not(:disabled) {
+        background: var(--primary-light);
+        transform: translateY(-1px);
+        box-shadow: 0 6px 10px rgba(99, 102, 241, 0.3);
+      }
+
+      /* Secondary Button (Add Client) */
+      #addClient {
+        background: var(--secondary-green);
+        margin-bottom: 5px;
+      }
+      #addClient:hover:not(:disabled) {
+        background: #059669; /* Darker emerald */
+        transform: translateY(-1px);
+        box-shadow: 0 6px 10px rgba(16, 185, 129, 0.3);
+      }
+
+      /* Remove Button Style */
+      .remove-row-btn {
+        background: var(--danger-color);
+        width: auto;
+        padding: 5px 12px;
+        font-size: 0.85em;
+        margin-top: 10px;
+        float: right; /* Use float/flex to position within the row */
+      }
+      .remove-row-btn:hover:not(:disabled) {
+        background: #b91c1c; /* Darker red on hover */
+        box-shadow: 0 4px 6px rgba(239, 68, 68, 0.3);
+      }
+
+      /* --- MODAL STYLES (Replaces Alert) --- */
+      .modal-overlay {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(0, 0, 0, 0.8);
+        display: none; /* Hidden by default */
+        justify-content: center;
+        align-items: center;
+        z-index: 1000;
+      }
+
+      .modal-content {
+        background: var(--light-bg);
+        padding: 30px;
+        border-radius: 10px;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+        max-width: 90%;
+        width: 400px;
+        text-align: center;
+        transform: translateY(-50px);
+        opacity: 0;
+        transition: transform 0.3s ease-out, opacity 0.3s ease-out;
+        border-top: 4px solid var(--primary-color);
+      }
+      .modal-overlay.active .modal-content {
+        transform: translateY(0);
+        opacity: 1;
+      }
+
+      .modal-icon {
+        font-size: 2.5em;
+        margin-bottom: 15px;
+        line-height: 1;
+      }
+
+      .modal-title {
+        font-size: 1.5em;
+        font-weight: 700;
+        margin-bottom: 10px;
+        color: var(--header-color);
+      }
+
+      .modal-message {
+        color: var(--text-color);
+        margin-bottom: 20px;
+      }
+
+      .modal-content.error .modal-icon {
+        color: var(--danger-color);
+      }
+      .modal-content.success .modal-icon {
+        color: var(--secondary-green);
+      }
+      .modal-content.info .modal-icon {
+        color: var(--primary-color);
+      }
+
+      /* Home Button Styling */
+      .home-btn {
+        position: absolute;
+        top: 20px;
+        left: 20px;
+        background: var(--primary-color);
+        color: white;
+        border: none;
+        padding: 10px 16px;
+        border-radius: 6px;
+        cursor: pointer;
+        font-weight: 600;
+        font-size: 0.9em;
+        transition: background-color 0.3s ease, transform 0.1s;
+        text-decoration: none;
+        display: inline-flex;
+        align-items: center;
+        gap: 6px;
+      }
+      .home-btn:hover {
+        background: var(--primary-light);
+        transform: translateY(-1px);
+      }
+    </style>
+  </head>
+  <body>
+    <a href="index.html" class="home-btn">← Home</a>
+    <div class="container">
+      <h2>Dispatch Reconnect Links</h2>
+      <form id="clientsForm">
+        <div class="clientRow" id="initialClientRow">
+          <!-- Autofill section will be injected here by JS if clientData exists -->
+
+          <label>Client Email:</label>
+          <input
+            name="email"
+            type="email"
+            placeholder="e.g., jane.doe@company.com"
+            required
+          />
+        </div>
+
+        <button type="button" id="addClient">Add Another Client Record</button>
+        <button type="submit">Send All Emails</button>
+      </form>
+    </div>
+
+    <!-- Modal Structure for Alerts -->
+    <div class="modal-overlay" id="messageModal">
+      <div class="modal-content info">
+        <div class="modal-icon"></div>
+        <div class="modal-title"></div>
+        <p class="modal-message"></p>
+        <button id="modalCloseBtn">Close</button>
+      </div>
+    </div>
+
+    <script>
+      // 1. DUMMY CLIENT DATA
+      const clientData = [
+        {
+          email: "anaysuraanay@gmail.com",
+        },
+        {
+          email: "replwebsite@gmail.com",
+        },
+        {
+          email: "hikersassociation@gmail.com",
+        },
+      ];
+
+      const form = document.getElementById("clientsForm");
+      const addBtn = document.getElementById("addClient");
+
+      // --- MODAL/MESSAGE BOX FUNCTIONS (Replaces alert()) ---
+
+      const modal = document.getElementById("messageModal");
+      const modalContent = modal.querySelector(".modal-content");
+      const modalTitle = modal.querySelector(".modal-title");
+      const modalMessage = modal.querySelector(".modal-message");
+      const modalIcon = modal.querySelector(".modal-icon");
+      const modalCloseBtn = document.getElementById("modalCloseBtn");
+
+      /**
+       * Displays a styled message box instead of the browser's alert().
+       * @param {string} title - The title of the message (e.g., "Error" or "Success").
+       * @param {string} message - The main message body.
+       * @param {string} type - 'success', 'error', or 'info'.
+       */
+      const showMessage = (title, message, type = "info") => {
+        modalContent.className = `modal-content ${type}`; // Reset class
+
+        modalTitle.textContent = title;
+        modalMessage.textContent = message;
+
+        // Set Icon based on type
+        let iconHtml = "";
+        switch (type) {
+          case "success":
+            iconHtml = "&#10004;"; // Checkmark
+            break;
+          case "error":
+            iconHtml = "&#9888;"; // Warning sign
+            break;
+          case "info":
+          default:
+            iconHtml = "i"; // 'i' for info or similar simple icon
+            break;
+        }
+        modalIcon.innerHTML = iconHtml;
+
+        modal.style.display = "flex";
+        setTimeout(() => modal.classList.add("active"), 10); // Trigger transition
+      };
+
+      // Hide modal on close button click
+      modalCloseBtn.onclick = () => {
+        modal.classList.remove("active");
+        setTimeout(() => (modal.style.display = "none"), 300);
+      };
+
+      // Hide modal on overlay click
+      modal.onclick = (e) => {
+        if (e.target === modal) {
+          modalCloseBtn.click();
+        }
+      };
+
+      // --- CLIENT ROW LOGIC (Modified to use select instead of button) ---
+
+      /**
+       * Injects the autofill dropdown and attaches listeners for autofill and removal
+       * for a given clientRow element.
+       * @param {HTMLElement} rowElement The .clientRow div to initialize.
+       */
+      const initializeClientRow = (rowElement) => {
+        if (clientData.length > 0) {
+          // 1. Construct and Insert Autofill Select at the top of the row
+          const autofillHtml = `
+              <div class="autofill-section">
+                <label>Autofill Client:</label>
+                <select class="autofill-select">
+                  <option value="">-- Select Client to Autofill --</option>
+                  ${clientData
+                    .map(
+                      (client) =>
+                        `<option value="${client.email}">${client.email}</option>`
+                    )
+                    .join("")}
+                </select>
+              </div>
+            `;
+          rowElement.insertAdjacentHTML("afterbegin", autofillHtml);
+
+          // 2. Attach Autofill Listener
+          const selectElement = rowElement.querySelector(".autofill-select");
+          const emailInput = rowElement.querySelector('input[name="email"]');
+
+          selectElement.addEventListener("change", (e) => {
+            if (e.target.value) {
+              // Autofill the input
+              emailInput.value = e.target.value;
+            } else {
+              // Clear inputs if "Select Client" is chosen
+              emailInput.value = "";
+            }
+          });
+        }
+
+        // 3. Insert and Attach Remove Listener (Only if not the first initial row)
+        // We only show the remove button if the row is dynamically added
+        if (rowElement.id !== "initialClientRow") {
+          const removeBtnHtml =
+            '<button type="button" class="remove-row-btn">Remove Record</button>';
+          rowElement.insertAdjacentHTML("beforeend", removeBtnHtml);
+
+          rowElement
+            .querySelector(".remove-row-btn")
+            .addEventListener("click", () => {
+              rowElement.remove();
+            });
+        }
+      };
+
+      /**
+       * Creates a brand new, empty client row with all necessary inputs.
+       */
+      const createNewClientRow = () => {
+        const div = document.createElement("div");
+        div.className = "clientRow";
+
+        // Populate the base structure
+        div.innerHTML = `
+          <label>Client Email:</label>
+          <input name="email" type="email" placeholder="e.g., john.smith@company.com" required>
+        `;
+
+        // Initialize the new row (adds autofill select and remove button)
+        initializeClientRow(div);
+
+        // Insert new row before the 'Add Client' button
+        form.insertBefore(div, addBtn);
+      };
+
+      // --- INITIALIZATION & EVENT LISTENERS ---
+
+      // Initialize the first row (autofill, but no remove button)
+      const firstRow = document.getElementById("initialClientRow");
+      if (firstRow) {
+        initializeClientRow(firstRow);
+        // Remove the temporary ID once initialized
+        firstRow.removeAttribute("id");
+      }
+
+      // Add Client Button Click Handler
+      addBtn.onclick = createNewClientRow;
+
+      // Form Submission Handler
+      form.onsubmit = async (e) => {
+        e.preventDefault();
+
+        const rows = [...document.querySelectorAll(".clientRow")]
+          .map((r) => ({
+            // Only collecting email
+            email: r.querySelector('input[name="email"]').value.trim(),
+          }))
+          // Filter only if email is present
+          .filter((r) => r.email);
+
+        if (rows.length === 0) {
+          showMessage(
+            "Validation Error",
+            "Please enter at least one client email address before sending.",
+            "error"
+          );
+          return;
+        }
+
+        const submitButton = form.querySelector('button[type="submit"]');
+        const originalText = submitButton.textContent;
+        submitButton.textContent = "Sending...";
+        submitButton.disabled = true;
+
+        try {
+          // NOTE: Using the provided URL. In a real application, ensure this is secure.
+          const webhookUrl =
+            "https://hook.us2.make.com/23rq72127wilk7hoqry3yt2wdeirb3a2";
+
+          const response = await fetch(webhookUrl, {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({ clients: rows }),
+          });
+
+          if (response.ok) {
+            showMessage(
+              "Dispatch Success",
+              `Success! ${rows.length} client record(s) sent for processing. The webhook acknowledged the request.`,
+              "success"
+            );
+
+            // Clean up the form
+            const allRows = document.querySelectorAll(".clientRow");
+            allRows.forEach((row, index) => {
+              if (index === 0) {
+                // Clear the first row inputs/select after successful submission
+                row.querySelector('input[name="email"]').value = "";
+                const selectElement = row.querySelector(".autofill-select");
+                if (selectElement) selectElement.value = "";
+              } else {
+                // Remove all dynamically added rows
+                row.remove();
+              }
+            });
+          } else {
+            const errorText = await response.text();
+            showMessage(
+              "Dispatch Failed",
+              `The service returned an error (Status: ${
+                response.status
+              }). Response detail: ${errorText.substring(0, 100)}...`,
+              "error"
+            );
+          }
+        } catch (err) {
+          console.error("Fetch Error:", err);
+          showMessage(
+            "Network Error",
+            "A network error occurred while sending data. Please check your connection and try again.",
+            "error"
+          );
+        } finally {
+          submitButton.textContent = originalText;
+          submitButton.disabled = false;
+        }
+      };
+    </script>
+  </body>
+</html>
