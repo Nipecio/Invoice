@@ -488,13 +488,13 @@
       addServiceBtn.onclick = () => {
         // Prevent adding more rows than MAX_SERVICES allows
         if (servicesContainer.children.length >= MAX_SERVICES) {
-          // Changed alert to a visual status message as alerts are blocked in the environment
+          // FIX: Replaced invalid JS syntax 'var(--danger-color)' with hex code '#ef4444'
           statusEl.style.display = "block";
-          statusEl.style.backgroundColor = var(--danger-color);
-          statusEl.style.color = 'white';
+          statusEl.style.backgroundColor = "#ef4444";
+          statusEl.style.color = "white";
           statusEl.innerText = `You can only add up to ${MAX_SERVICES} services.`;
           setTimeout(() => {
-            statusEl.style.display = 'none';
+            statusEl.style.display = "none";
           }, 3000); // Hide after 3 seconds
           return;
         }
@@ -556,16 +556,17 @@
 
         // basic validation
         if (!issuedTo || !email || !invoiceNumber) {
-            statusEl.style.display = "block";
-            statusEl.style.backgroundColor = var(--danger-color);
-            statusEl.style.color = 'white';
-            statusEl.innerText = "Please fill in Client Name, Email, and Invoice Number.";
-            setTimeout(() => {
-                statusEl.style.display = 'none';
-            }, 5000);
-            return;
+          // FIX: Replaced invalid JS syntax 'var(--danger-color)' with hex code '#ef4444'
+          statusEl.style.display = "block";
+          statusEl.style.backgroundColor = "#ef4444";
+          statusEl.style.color = "white";
+          statusEl.innerText =
+            "Please fill in Client Name, Email, and Invoice Number.";
+          setTimeout(() => {
+            statusEl.style.display = "none";
+          }, 5000);
+          return;
         }
-
 
         // build payload
         const payload = {
@@ -589,8 +590,8 @@
 
         // **SHOW STATUS BOX AND SET INITIAL TEXT**
         statusEl.style.display = "block";
-        statusEl.style.backgroundColor = '#312e81'; /* Consistent background */
-        statusEl.style.color = var(--primary-light);
+        statusEl.style.backgroundColor = "#312e81"; /* Consistent background */
+        statusEl.style.color = "#818cf8"; // Using the primary-light color
         statusEl.innerText = "Sending invoice...";
 
         // Use exponential backoff for API calls
@@ -598,52 +599,56 @@
         let retryDelay = 1000;
 
         for (let attempt = 0; attempt < maxRetries; attempt++) {
-            try {
-                const res = await fetch(
-                    "https://hook.us2.make.com/mgj3n3akl1cd4g65nkt7csl2m62ptvef",
-                    {
-                        method: "POST",
-                        headers: { "Content-Type": "application/json" },
-                        body: JSON.stringify(payload),
-                    }
-                );
+          try {
+            const res = await fetch(
+              "https://hook.us2.make.com/mgj3n3akl1cd4g65nkt7csl2m62ptvef",
+              {
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify(payload),
+              }
+            );
 
-                if (res.ok) {
-                    statusEl.innerText = "Invoice submitted successfully!";
-                    // Reset the form if needed, otherwise leave data for user to review
-                    // location.reload();
-                    return; // Success, exit function
-                } else if (res.status === 429 || res.status >= 500) {
-                    // Log error and retry if server error or too many requests
-                    if (attempt < maxRetries - 1) {
-                        statusEl.innerText = `Sending failed. Retrying in ${retryDelay / 1000}s...`;
-                        await new Promise(resolve => setTimeout(resolve, retryDelay));
-                        retryDelay *= 2; // Exponential backoff
-                        continue; // Move to the next attempt
-                    } else {
-                        // Max retries reached
-                        const text = await res.text();
-                        statusEl.innerText = `Error sending invoice after ${maxRetries} attempts: ${res.status} ${text}`;
-                        break;
-                    }
-                } else {
-                    // Client error (4xx) - no need to retry
-                    const text = await res.text();
-                    statusEl.innerText = `Error sending invoice: ${res.status} ${text}`;
-                    break;
-                }
-            } catch (err) {
-                // Network error - retry
-                if (attempt < maxRetries - 1) {
-                    statusEl.innerText = `Network issue. Retrying in ${retryDelay / 1000}s...`;
-                    await new Promise(resolve => setTimeout(resolve, retryDelay));
-                    retryDelay *= 2; // Exponential backoff
-                    continue;
-                } else {
-                    statusEl.innerText = "Network error: " + err.message;
-                    break;
-                }
+            if (res.ok) {
+              statusEl.innerText = "Invoice submitted successfully!";
+              // You might want to clear the status after a delay
+              // setTimeout(() => statusEl.style.display = 'none', 5000);
+              return; // Success, exit function
+            } else if (res.status === 429 || res.status >= 500) {
+              // Log error and retry if server error or too many requests
+              if (attempt < maxRetries - 1) {
+                statusEl.innerText = `Sending failed. Retrying in ${
+                  retryDelay / 1000
+                }s...`;
+                await new Promise((resolve) => setTimeout(resolve, retryDelay));
+                retryDelay *= 2; // Exponential backoff
+                continue; // Move to the next attempt
+              } else {
+                // Max retries reached
+                const text = await res.text();
+                statusEl.innerText = `Error sending invoice after ${maxRetries} attempts: ${res.status} ${text}`;
+                break;
+              }
+            } else {
+              // Client error (4xx) - no need to retry
+              const text = await res.text();
+              statusEl.innerText = `Error sending invoice: ${res.status} ${text}`;
+              break;
             }
+          } catch (err) {
+            // Network error - retry
+            if (attempt < maxRetries - 1) {
+              statusEl.innerText = `Network issue. Retrying in ${
+                retryDelay / 1000
+              }s...`;
+              await new Promise((resolve) => setTimeout(resolve, retryDelay));
+              retryDelay *= 2; // Exponential backoff
+              continue;
+            } else {
+              statusEl.innerText = "Network error: " + err.message;
+              break;
+            }
+          }
         }
       };
     </script>
