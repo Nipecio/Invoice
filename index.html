@@ -12,10 +12,7 @@
       body {
         font-family: "Inter", sans-serif;
       }
-      /* Custom gradient for a modern look */
-      .card-gradient-1 {
-        background: linear-gradient(135deg, #1f2937, #374151);
-      }
+      /* Custom gradient used for all cards */
       .card-gradient-2 {
         background: linear-gradient(135deg, #1f2937, #4b5563);
       }
@@ -37,16 +34,21 @@
       </header>
 
       <!-- Navigation Cards Section -->
-      <main class="grid grid-cols-1 md:grid-cols-3 gap-6">
-        <!-- Card 1: Auto Invoice (LINK UPDATED TO INDEX3.HTML) -->
+
+      <!--
+        Updated Grid: Changed from md:grid-cols-3 to md:grid-cols-2. 
+        This makes the cards wider and more rectangular.
+      -->
+      <main class="grid grid-cols-1 md:grid-cols-2 gap-6">
+        <!-- Card 1: Auto Invoice -->
         <a
           href="index3.html"
-          class="block p-6 rounded-xl shadow-2xl card-gradient-1 transition duration-300 transform hover:scale-[1.03] hover:shadow-indigo-500/50 group border-t border-indigo-500/20"
+          class="block p-8 rounded-xl shadow-2xl card-gradient-2 transition duration-300 transform hover:scale-[1.03] hover:shadow-blue-500/50 group border-t border-blue-500/20"
         >
           <div class="flex items-start space-x-4">
             <!-- Icon for Invoice (Document with lines) -->
             <svg
-              class="w-10 h-10 text-indigo-400 group-hover:text-blue-300 transition flex-shrink-0 mt-1"
+              class="w-10 h-10 text-blue-400 group-hover:text-indigo-300 transition flex-shrink-0 mt-1"
               fill="none"
               stroke="currentColor"
               viewBox="0 0 24 24"
@@ -67,7 +69,7 @@
             </svg>
             <div>
               <h2
-                class="text-3xl font-bold text-white mb-1 group-hover:text-indigo-300 transition"
+                class="text-3xl font-bold text-white mb-1 group-hover:text-blue-300 transition"
               >
                 Auto Invoice
               </h2>
@@ -78,49 +80,15 @@
           </div>
         </a>
 
-        <!-- Card 2: Auth Reminders (Link remains index2.html) -->
-        <a
-          href="index2.html"
-          class="block p-6 rounded-xl shadow-2xl card-gradient-2 transition duration-300 transform hover:scale-[1.03] hover:shadow-blue-500/50 group border-t border-blue-500/20"
-        >
-          <div class="flex items-start space-x-4">
-            <!-- Icon for Reminders (Using inline SVG for compatibility) -->
-            <svg
-              class="w-10 h-10 text-blue-400 group-hover:text-indigo-300 transition flex-shrink-0 mt-1"
-              fill="none"
-              stroke="currentColor"
-              viewBox="0 0 24 24"
-              xmlns="http://www.w3.org/2000/svg"
-            >
-              <path
-                stroke-linecap="round"
-                stroke-linejoin="round"
-                stroke-width="2"
-                d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"
-              />
-            </svg>
-            <div>
-              <h2
-                class="text-3xl font-bold text-white mb-1 group-hover:text-blue-300 transition"
-              >
-                Auth Reminders
-              </h2>
-              <p class="text-gray-400 text-sm">
-                Track and manage important authentication expiry dates.
-              </p>
-            </div>
-          </div>
-        </a>
-
-        <!-- Card 3: Gmail -->
+        <!-- Card 2: Gmail -->
         <a
           href="index4.html"
-          class="block p-6 rounded-xl shadow-2xl card-gradient-1 transition duration-300 transform hover:scale-[1.03] hover:shadow-indigo-500/50 group border-t border-indigo-500/20"
+          class="block p-8 rounded-xl shadow-2xl card-gradient-2 transition duration-300 transform hover:scale-[1.03] hover:shadow-blue-500/50 group border-t border-blue-500/20"
         >
           <div class="flex items-start space-x-4">
             <!-- Icon for Gmail (Envelope) -->
             <svg
-              class="w-10 h-10 text-indigo-400 group-hover:text-blue-300 transition flex-shrink-0 mt-1"
+              class="w-10 h-10 text-blue-400 group-hover:text-indigo-300 transition flex-shrink-0 mt-1"
               fill="none"
               stroke="currentColor"
               viewBox="0 0 24 24"
@@ -135,17 +103,148 @@
             </svg>
             <div>
               <h2
-                class="text-3xl font-bold text-white mb-1 group-hover:text-indigo-300 transition"
+                class="text-3xl font-bold text-white mb-1 group-hover:text-blue-300 transition"
               >
                 Gmail
               </h2>
               <p class="text-gray-400 text-sm">
-                Access your email inbox and communications.
+                Access your Gmail inbox and communications.
               </p>
             </div>
           </div>
         </a>
       </main>
+
+      <!-- Maintenance Reminder section -->
+      <div class="mt-12 text-center">
+        <h1
+          class="text-7xl md:text-8xl font-black text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-indigo-500 tracking-tight mb-4"
+        >
+          Maintenance Reminder
+        </h1>
+        <p class="text-gray-400 text-xl md:text-2xl">Password required.</p>
+
+        <div class="mt-6 flex items-center justify-center">
+          <!-- Auth Reminders card (Width adjusted to match grid columns) -->
+          <a
+            href="#"
+            id="authCard"
+            class="block p-8 rounded-xl shadow-2xl card-gradient-2 transition duration-300 transform hover:scale-[1.03] hover:shadow-blue-500/50 group border-t border-blue-500/20 w-full md:w-1/2"
+          >
+            <div class="flex items-start space-x-4">
+              <svg
+                class="w-10 h-10 text-blue-400 group-hover:text-indigo-300 transition flex-shrink-0 mt-1"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"
+                />
+              </svg>
+              <div>
+                <h2
+                  class="text-3xl font-bold text-white mb-1 group-hover:text-blue-300 transition"
+                >
+                  Auth Reminders
+                </h2>
+                <p class="text-gray-400 text-sm">
+                  Track and manage important authentication expiry dates.
+                </p>
+              </div>
+            </div>
+          </a>
+        </div>
+      </div>
     </div>
+    <!-- Password Modal for Auth Reminders -->
+    <div
+      id="authModal"
+      class="fixed inset-0 bg-black bg-opacity-60 flex items-center justify-center hidden z-50"
+    >
+      <div class="bg-gray-800 p-6 rounded-lg w-full max-w-sm">
+        <h3 class="text-white text-lg font-semibold mb-3">Enter Password</h3>
+        <input
+          id="authPassword"
+          type="password"
+          placeholder="Password"
+          class="w-full p-3 rounded mb-3 bg-gray-900 text-white border border-gray-700"
+        />
+        <div id="authError" class="text-red-400 text-sm mb-3 hidden">
+          Incorrect password
+        </div>
+        <div class="flex justify-end gap-2">
+          <button
+            id="authCancel"
+            class="px-4 py-2 bg-gray-600 text-white rounded"
+          >
+            Cancel
+          </button>
+          <button
+            id="authSubmit"
+            class="px-4 py-2 bg-indigo-500 hover:bg-indigo-400 text-white rounded"
+          >
+            Unlock
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <script>
+      // CONFIG: Change this password to something secure.
+      const AUTH_PASSWORD = "admin123";
+
+      // compact link in the less-prominent list
+      const authCard =
+        document.getElementById("authLinkCompact") ||
+        document.getElementById("authCard");
+      const authModal = document.getElementById("authModal");
+      const authPassword = document.getElementById("authPassword");
+      const authSubmit = document.getElementById("authSubmit");
+      const authCancel = document.getElementById("authCancel");
+      const authError = document.getElementById("authError");
+
+      // Show modal when clicking the auth card or compact link
+      if (authCard) {
+        authCard.addEventListener("click", (e) => {
+          e.preventDefault();
+          authError.classList.add("hidden");
+          authPassword.value = "";
+          authModal.classList.remove("hidden");
+        });
+      }
+
+      // Cancel button
+      authCancel.addEventListener("click", () => {
+        authModal.classList.add("hidden");
+      });
+
+      // Submit handler
+      const unlock = () => {
+        const val = authPassword.value;
+        if (val === AUTH_PASSWORD) {
+          // Mark session as allowed then navigate
+          sessionStorage.setItem("authAllowed", "true");
+          window.location.href = "index2.html";
+        } else {
+          authError.classList.remove("hidden");
+        }
+      };
+
+      authSubmit.addEventListener("click", unlock);
+
+      authPassword.addEventListener("keydown", (e) => {
+        if (e.key === "Enter") unlock();
+      });
+
+      // Close modal when clicking outside content
+      authModal.addEventListener("click", (e) => {
+        if (e.target === authModal) authModal.classList.add("hidden");
+      });
+    </script>
   </body>
 </html>

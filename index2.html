@@ -274,6 +274,18 @@
     </div>
 
     <script>
+      // Access guard: require session flag set by the dashboard unlock
+      if (sessionStorage.getItem("authAllowed") !== "true") {
+        // Not unlocked — redirect back to the automations launchpad
+        window.location.href = "index.html";
+      }
+
+      // Clear the flag when leaving this page so the gate must be used again
+      window.addEventListener("beforeunload", () => {
+        try {
+          sessionStorage.removeItem("authAllowed");
+        } catch (e) {}
+      });
       // 1. DUMMY CLIENT DATA
       const clientData = [
         {
