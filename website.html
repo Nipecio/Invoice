@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Client Websites Showcase</title>
+    <!-- Load Tailwind CSS via CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+      @import url("https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap");
+      body {
+        font-family: "Inter", sans-serif;
+        /* Ensure the body is full height for centering and dark theme */
+        min-height: 100vh;
+      }
+      /* Custom gradient for cards - matching the theme */
+      .card-gradient {
+        background: linear-gradient(135deg, #1f2937, #374151);
+      }
+
+      /* --- Dramatic Hover Effect: BLOW UP --- */
+      .hover-blow-up {
+        /* Base transition for the card itself (z-index and slight scale) */
+        transition: transform 0.5s cubic-bezier(0.25, 0.8, 0.25, 1),
+          box-shadow 0.5s ease-in-out;
+        transform-origin: center center;
+        position: relative;
+        z-index: 10;
+        cursor: pointer;
+        /* Hides the scaled image edges outside the card bounds */
+        overflow: hidden;
+      }
+
+      /* Container for the image and overlay to manage the scaling */
+      .image-wrapper {
+        position: relative;
+        overflow: hidden;
+        /* Ensures the image transition is smooth */
+      }
+
+      /* Base style for image and overlay transitions */
+      .image-wrapper img,
+      .overlay {
+        transition: all 0.5s cubic-bezier(0.25, 0.8, 0.25, 1);
+      }
+
+      /* Overlay style (hidden by default) */
+      .overlay {
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background-color: rgba(0, 0, 0, 0.85); /* Black overlay */
+        opacity: 0; /* Hidden by default */
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+        font-size: 2rem; /* text-4xl equivalent */
+        font-weight: bold;
+        color: white;
+        /* Important: allows the click event to pass through to the anchor tag (<a>) */
+        pointer-events: none;
+      }
+
+      /* Hover effect on the parent <a> */
+      .hover-blow-up:hover {
+        z-index: 50;
+        /* Slightly scale the card itself to emphasize it is the focus */
+        transform: scale(1.05);
+        /* Kept Blue shadow */
+        box-shadow: 0 40px 80px -15px rgba(59, 130, 246, 0.7),
+          0 20px 20px -10px rgba(59, 130, 246, 0.5);
+      }
+
+      /* When hovering the card, scale the image dramatically (2x size) */
+      .hover-blow-up:hover .image-wrapper img {
+        transform: scale(2);
+      }
+
+      /* Show the overlay on hover */
+      .hover-blow-up:hover .overlay {
+        opacity: 1;
+      }
+
+      /* Subtle pulse animation for the 'Yours Next?' card */
+      @keyframes pulse-subtle {
+        0%,
+        100% {
+          opacity: 1;
+        }
+        50% {
+          opacity: 0.85;
+        }
+      }
+      .animate-pulse-subtle {
+        animation: pulse-subtle 3s infinite ease-in-out;
+      }
+    </style>
+  </head>
+  <body class="bg-gray-900 text-white p-4 sm:p-8">
+    <!-- Header and Back Button -->
+    <div class="max-w-6xl mx-auto mb-10 flex items-center justify-between">
+      <a
+        href="index.html"
+        class="flex items-center text-blue-400 hover:text-blue-300 transition-colors"
+      >
+        <!-- Back Arrow Icon -->
+        <svg
+          class="w-6 h-6 mr-2"
+          fill="none"
+          stroke="currentColor"
+          viewBox="0 0 24 24"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <path
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            stroke-width="2"
+            d="M10 19l-7-7m0 0l7-7m-7 7h18"
+          ></path>
+        </svg>
+        <span class="text-lg font-medium">Back to Launchpad</span>
+      </a>
+      <h1
+        class="text-4xl md:text-5xl font-black text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-indigo-500 tracking-tight"
+      >
+        Our Client Showcase
+      </h1>
+      <div></div>
+      <!-- Spacer for alignment -->
+    </div>
+
+    <!-- Main Content Grid -->
+    <main class="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-16 p-4">
+      <!-- Card 1: Modern Website Demo -->
+      <a
+        href="https://nipecio.github.io/website-client-1/"
+        target="_blank"
+        class="block p-4 rounded-xl shadow-xl card-gradient hover-blow-up"
+        title="View Live Site: Project Alpha"
+      >
+        <!-- Image Wrapper + Overlay -->
+        <div class="image-wrapper rounded-lg mb-4 shadow-lg">
+          <img
+            src="modern.png"
+            alt="A screenshot of a professional, modern website layout"
+            class="w-full h-auto object-cover"
+            onerror="this.onerror=null;this.src='https://placehold.co/600x400/1e40af/ffffff?text=Image+Load+Error';"
+          />
+          <!-- Overlay Content -->
+          <div class="overlay">CLICK HERE</div>
+        </div>
+
+        <!-- Non-scaling text content -->
+        <div>
+          <h2 class="text-2xl font-bold text-white mb-2 text-center">
+            Project: Sleek Modern
+          </h2>
+          <p class="text-gray-400 text-center text-sm">
+            High-performance, fully responsive business site focused on
+            conversions.
+          </p>
+          <div class="flex justify-center mt-3">
+            <span
+              class="inline-flex items-center px-3 py-1 text-xs font-semibold leading-none text-blue-100 bg-blue-600 rounded-full"
+            >
+              View Live Site
+            </span>
+          </div>
+        </div>
+      </a>
+
+      <!-- Card 2: Classic Website Demo -->
+      <a
+        href="https://nipecio.github.io/website-client-1/old.html"
+        target="_blank"
+        class="block p-4 rounded-xl shadow-xl card-gradient hover-blow-up"
+        title="View Live Site: Project Beta"
+      >
+        <!-- Image Wrapper + Overlay -->
+        <div class="image-wrapper rounded-lg mb-4 shadow-lg">
+          <img
+            src="old.png"
+            alt="A screenshot of a robust, informational website design"
+            class="w-full h-auto object-cover"
+            onerror="this.onerror=null;this.src='https://placehold.co/600x400/14532d/ffffff?text=Image+Load+Error';"
+          />
+          <!-- Overlay Content -->
+          <div class="overlay">CLICK HERE</div>
+        </div>
+
+        <!-- Non-scaling text content -->
+        <div>
+          <h2 class="text-2xl font-bold text-white mb-2 text-center">
+            Project: Content Focus
+          </h2>
+          <p class="text-gray-400 text-center text-sm">
+            Stable and scalable architecture for deep archival and content
+            management.
+          </p>
+          <div class="flex justify-center mt-3">
+            <!-- Changed green classes to blue/indigo classes -->
+            <span
+              class="inline-flex items-center px-3 py-1 text-xs font-semibold leading-none text-indigo-100 bg-indigo-600 rounded-full"
+            >
+              View Live Site
+            </span>
+          </div>
+        </div>
+      </a>
+
+      <!-- Card 3: Yours Next? -->
+      <div
+        class="flex flex-col items-center justify-center p-8 rounded-xl shadow-xl card-gradient border-4 border-dashed border-indigo-500/50 text-center animate-pulse-subtle"
+        title="Start your own website project"
+      >
+        <!-- Changed pink icon color to indigo -->
+        <svg
+          class="w-20 h-20 text-indigo-400 mb-4"
+          fill="none"
+          stroke="currentColor"
+          viewBox="0 0 24 24"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <path
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            stroke-width="1.5"
+            d="M12 9v3m0 0v3m0-3h3m-3 0H9m12 0a9 9 0 11-18 0 9 9 0 0118 0z"
+          ></path>
+        </svg>
+        <!-- Changed pink text color to indigo -->
+        <h2 class="text-4xl font-black text-indigo-300">Yours Next?</h2>
+        <p class="text-gray-300 mt-2 text-lg">
+          Ready to build something incredible? Let's start your custom project
+          today.
+        </p>
+        <!-- Changed pink button color to indigo -->
+        <button
+          class="mt-4 px-6 py-2 bg-indigo-600 text-white font-semibold rounded-full hover:bg-indigo-500 transition duration-300 shadow-md"
+        >
+          Get Started
+        </button>
+      </div>
+    </main>
+  </body>
+</html>
