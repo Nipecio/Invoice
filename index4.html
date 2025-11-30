@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Gmail Auto Reply</title>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;900&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      /* --- DARK THEME TO MATCH index.html, index2.html, AND index3.html --- */
+      :root {
+        --primary-color: #6366f1; /* Indigo-500 for buttons/accents */
+        --primary-light: #818cf8; /* Indigo-400 for hover */
+        --secondary-green: #10b981; /* Emerald-500 for success/add */
+        --danger-color: #ef4444; /* Red-500 for errors */
+        --text-color: #d1d5db; /* Gray-300 for main text */
+        --light-bg: #1f2937; /* Gray-800 for the main container background */
+        --page-bg: #111827; /* Gray-900 for the body background */
+        --border-color: #374151; /* Gray-700 for borders */
+        --header-color: #f3f4f6; /* Gray-100 for headers */
+      }
+
+      body {
+        font-family: "Inter", sans-serif;
+        background: var(--page-bg);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        min-height: 100vh;
+        margin: 0;
+        padding: 20px;
+        box-sizing: border-box;
+      }
+
+      .container {
+        background: var(--light-bg);
+        padding: 40px;
+        border-radius: 10px;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+        width: 100%;
+        max-width: 600px;
+        border-top: 5px solid var(--primary-color);
+      }
+
+      h1 {
+        text-align: center;
+        margin-top: 0;
+        margin-bottom: 30px;
+        color: var(--header-color);
+        font-weight: 700;
+        font-size: 2em;
+      }
+
+      .instructions {
+        background: #2a3545;
+        padding: 25px;
+        border-radius: 8px;
+        border-left: 4px solid var(--primary-color);
+        color: var(--text-color);
+        line-height: 1.8;
+        font-size: 0.95em;
+      }
+
+      .instructions p {
+        margin: 0 0 20px 0;
+      }
+
+      .instructions p:last-child {
+        margin-bottom: 0;
+      }
+
+      /* Home Button Styling */
+      .home-btn {
+        position: absolute;
+        top: 20px;
+        left: 20px;
+        background: var(--primary-color);
+        color: white;
+        border: none;
+        padding: 10px 16px;
+        border-radius: 6px;
+        cursor: pointer;
+        font-weight: 600;
+        font-size: 0.9em;
+        transition: background-color 0.3s ease, transform 0.1s;
+        text-decoration: none;
+        display: inline-flex;
+        align-items: center;
+        gap: 6px;
+      }
+
+      .home-btn:hover {
+        background: var(--primary-light);
+        transform: translateY(-1px);
+      }
+
+      /* Gmail Access Button */
+      .gmail-btn {
+        display: inline-block;
+        background: #374151;
+        color: white;
+        border: none;
+        padding: 12px 24px;
+        border-radius: 6px;
+        cursor: pointer;
+        font-weight: 600;
+        font-size: 1em;
+        transition: box-shadow 0.3s ease;
+        text-decoration: none;
+        margin-top: 30px;
+        text-align: center;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+      }
+
+      .gmail-btn:hover {
+        box-shadow: 0 8px 12px rgba(55, 65, 81, 0.6);
+      }
+
+      .gmail-btn img {
+        margin-right: 8px;
+        vertical-align: middle;
+        width: 24px;
+        height: 24px;
+      }
+
+      @media (max-width: 600px) {
+        .container {
+          padding: 20px;
+        }
+
+        h1 {
+          font-size: 1.5em;
+        }
+
+        .instructions {
+          font-size: 0.9em;
+          padding: 15px;
+        }
+
+        .gmail-btn {
+          width: 100%;
+          padding: 14px 20px;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <a href="index.html" class="home-btn">← Home</a>
+    <div class="container">
+      <h1 style="margin-bottom: 25px">Gmail Auto Reply Setup</h1>
+
+      <div class="instructions">
+        <p>
+          For the auto gmail reply I'll have a downloaded copy of my make.com
+          scenario. I'll send it over to your gmail and you'll download it and
+          import it into your scenario.
+        </p>
+        <p>
+          We'll change the email connected to the watch emails module to the
+          yours as well for the send an email module.
+        </p>
+        <p>
+          You'll need a spreadsheet that will store the email data from all your
+          clients.
+        </p>
+      </div>
+
+      <a href="https://gmail.com" target="_blank" class="gmail-btn">
+        <img
+          src="https://ssl.gstatic.com/ui/v1/icons/mail/rfr/gmail.ico"
+          alt="Gmail"
+        />
+        Open Gmail
+      </a>
+    </div>
+  </body>
+</html>
