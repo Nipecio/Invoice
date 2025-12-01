@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Auto Email Instructions</title>
+    <title>Auto Invoice Instructions</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <style>
       @import url("https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap");
@@ -56,13 +56,13 @@
       <h1
         class="text-6xl md:text-6xl font-black text-blue-400 tracking-tighter mb-8 text-center"
       >
-        How to Use Auto Email
+        How to Use Auto Invoice
       </h1>
 
       <!-- Step 1: Left -->
       <div class="flex flex-col lg:flex-row items-center mb-8">
         <img
-          src="images/email1.png"
+          src="images/make1.png"
           alt="Step 1 Image"
           class="step-image w-full lg:w-1/2 lg:mr-8 mb-8 lg:mb-0"
         />
@@ -70,8 +70,9 @@
           <p class="text-white mb-4">
             First, I go into my own make.com account and export the full
             scenario that I built. After exporting it, I email you the scenario
-            file so you can import it into your account. This gives you the
-            complete automation setup exactly how it runs for me.
+            file along with my website code so you can import it into your
+            account. This gives you the complete automation setup exactly how it
+            runs for me.
           </p>
         </div>
       </div>
@@ -81,7 +82,7 @@
       <!-- Step 2: Right -->
       <div class="flex flex-col lg:flex-row-reverse items-center mb-8">
         <img
-          src="images/wmail2.png"
+          src="images/make2.png"
           alt="Step 2 Image"
           class="step-image w-full lg:w-1/2 lg:ml-8 mb-8 lg:mb-0"
         />
@@ -90,7 +91,7 @@
             Once I send you the exported scenario, you open your make.com
             account and import the file. Importing will recreate the entire
             workflow structure on your side, but you will reconnect the modules
-            with your own Google, email, and Spreadsheet so everything runs
+            with your own Google, email, and other services so everything runs
             under your account instead of mine.
           </p>
         </div>
@@ -99,21 +100,79 @@
       <!-- Step 3: Left -->
       <div class="flex flex-col lg:flex-row items-center mb-8">
         <img
-          src="images/wmaile3.png"
+          src="images/make3.png"
           alt="Step 3 Image"
           class="step-image w-full lg:w-1/2 lg:mr-8 mb-8 lg:mb-0"
         />
         <div class="step-text w-full lg:w-1/2">
           <p class="text-white mb-4">
-            After the scenario is imported, you create a Spreadsheet in your
-            drive and set up the first row with Timestamp, From Email, Subject,
-            and body (body is what they sent you). This is just for logging all
-            responses. You've already sent the email to them.
+            After the scenario is imported, you create a brand-new webhook
+            inside your Make.com account. This gives you a unique webhook URL.
+            You then open my website code and replace the old webhook address
+            with your new one so my site will send invoice data directly to your
+            scenario.
           </p>
         </div>
       </div>
 
       <div class="dashed-line"></div>
+
+      <!-- Step 4: Right -->
+      <div class="flex flex-col lg:flex-row-reverse items-center mb-8">
+        <img
+          src="images/make4.png"
+          alt="Step 4 Image"
+          class="step-image w-full lg:w-1/2 lg:ml-8 mb-8 lg:mb-0"
+        />
+        <div class="step-text w-full lg:w-1/2">
+          <p class="text-white mb-4">
+            Next, you create a new Google Spreadsheet in your Google account. In
+            the first column, you type all the values that will appear in the
+            invoice—these must match exactly what my website sends (name,
+            service, price, date, total, etc.). Every time someone fills out the
+            form on my site, these values will get logged into the sheet through
+            your scenario.
+          </p>
+        </div>
+      </div>
+
+      <!-- Step 5: Left -->
+      <div class="flex flex-col lg:flex-row items-center mb-8">
+        <img
+          src="images/make5.png"
+          alt="Step 5 Image"
+          class="step-image w-full lg:w-1/2 lg:mr-8 mb-8 lg:mb-0"
+        />
+        <div class="step-text w-full lg:w-1/2">
+          <p class="text-white mb-4">
+            Then, you create a Google Doc that will serve as the invoice
+            template. Inside the document, you type all the same field names
+            from the spreadsheet, but with double brackets like this:
+            {{customer_name}}, {{service}}, {{price}}, {{total}}. The spelling
+            must match the spreadsheet exactly. Make.com will automatically
+            replace those brackets with real data.
+          </p>
+        </div>
+      </div>
+
+      <!-- Step 6: Right -->
+      <div class="flex flex-col lg:flex-row-reverse items-center mb-8">
+        <img
+          src="images/make6.png"
+          alt="Step 6 Image"
+          class="step-image w-full lg:w-1/2 lg:ml-8 mb-8 lg:mb-0"
+        />
+        <div class="step-text w-full lg:w-1/2">
+          <p class="text-white mb-4">
+            Finally, you configure the Google Docs → PDF module so it downloads
+            the generated invoice as a PDF. You connect it with the same Google
+            account used for the first document. Then you update the email
+            module so it sends the PDF to your business email and to the
+            customer. This ensures both you and the client receive a copy of
+            every invoice automatically.
+          </p>
+        </div>
+      </div>
     </div>
   </body>
 </html>

@@ -15,10 +15,10 @@
         --primary-light: #818cf8; /* Indigo-400 for hover */
         --secondary-green: #10b981; /* Emerald-500 for success/add */
         --danger-color: #ef4444; /* Red-500 for errors */
-        --text-color: #d1d5db; /* Gray-300 for main text */
-        --light-bg: #1f2937; /* Gray-800 for the main container background */
-        --page-bg: #111827; /* Gray-900 for the body background */
-        --border-color: #374151; /* Gray-700 for borders */
+        --text-color: #ffffff; /* White for main text */
+        --light-bg: #000000; /* Gray-800 for the main container background */
+        --page-bg: #000000; /* Black for the body background */
+        --border-color: #000000; /* Gray-700 for borders */
         --header-color: #f3f4f6; /* Gray-100 for headers */
       }
 
@@ -51,12 +51,13 @@
         font-size: 1.8em;
       }
       .clientRow {
-        background: #2a3545; /* Dark gray background */
+        background: #000000; /* Dark gray background */
         padding: 18px;
         border: 1px solid var(--border-color);
         border-radius: 8px;
         margin-bottom: 20px;
         transition: border-color 0.3s, box-shadow 0.3s;
+        position: relative;
       }
       .clientRow:focus-within {
         border-color: var(--primary-color);
@@ -77,7 +78,7 @@
       input,
       select {
         width: 100%;
-        padding: 12px;
+        padding: 12px 30px 12px 12px;
         border-radius: 6px;
         border: 1px solid var(--border-color);
         font-size: 1em;
@@ -86,6 +87,11 @@
         margin-top: 5px;
         background-color: var(--page-bg);
         color: var(--text-color);
+        appearance: none;
+        background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='white' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3e%3cpolyline points='6,9 12,15 18,9'%3e%3c/polyline%3e%3c/svg%3e");
+        background-repeat: no-repeat;
+        background-position: right 5px center;
+        background-size: 16px;
       }
       input:focus,
       select:focus {
@@ -148,8 +154,7 @@
         width: auto;
         padding: 5px 12px;
         font-size: 0.85em;
-        margin-top: 10px;
-        float: right; /* Use float/flex to position within the row */
+        float: right;
       }
       .remove-row-btn:hover:not(:disabled) {
         background: #b91c1c; /* Darker red on hover */
@@ -217,34 +222,11 @@
       }
 
       /* Home Button Styling */
-      .home-btn {
-        position: absolute;
-        top: 20px;
-        left: 20px;
-        background: var(--primary-color);
-        color: white;
-        border: none;
-        padding: 10px 16px;
-        border-radius: 6px;
-        cursor: pointer;
-        font-weight: 600;
-        font-size: 0.9em;
-        transition: background-color 0.3s ease, transform 0.1s;
-        text-decoration: none;
-        display: inline-flex;
-        align-items: center;
-        gap: 6px;
-      }
-      .home-btn:hover {
-        background: var(--primary-light);
-        transform: translateY(-1px);
-      }
     </style>
   </head>
   <body>
-    <a href="index.html" class="home-btn">← Home</a>
     <div class="container">
-      <h2>Dispatch Reconnect Links</h2>
+      <h2>Dispatch Reconnect Links for MAKE.COM</h2>
       <form id="clientsForm">
         <div class="clientRow" id="initialClientRow">
           <!-- Autofill section will be injected here by JS if clientData exists -->
@@ -402,7 +384,8 @@
         if (rowElement.id !== "initialClientRow") {
           const removeBtnHtml =
             '<button type="button" class="remove-row-btn">Remove Record</button>';
-          rowElement.insertAdjacentHTML("beforeend", removeBtnHtml);
+          const autofillSection = rowElement.querySelector(".autofill-section");
+          autofillSection.insertAdjacentHTML("afterend", removeBtnHtml);
 
           rowElement
             .querySelector(".remove-row-btn")
