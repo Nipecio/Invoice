@@ -5,115 +5,215 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Auto Email Instructions</title>
     <script src="https://cdn.tailwindcss.com"></script>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
+    />
     <style>
       @import url("https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap");
       body {
         font-family: "Inter", sans-serif;
+        background: linear-gradient(
+          135deg,
+          #0f0f23 0%,
+          #1a1a2e 50%,
+          #16213e 100%
+        );
+        min-height: 100vh;
+      }
+
+      .hero-section {
+        background: linear-gradient(135deg, #ff6b6b 0%, #ffa500 100%);
+        padding: 4rem 2rem;
+        text-align: center;
+        border-radius: 0 0 50px 50px;
+        margin-bottom: 3rem;
+        box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+      }
+
+      .step-card {
+        background: rgba(255, 255, 255, 0.05);
+        backdrop-filter: blur(10px);
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        border-radius: 20px;
+        padding: 2rem;
+        margin-bottom: 2rem;
+        transition: all 0.3s ease;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+      }
+
+      .step-card:hover {
+        transform: translateY(-10px);
+        box-shadow: 0 20px 50px rgba(0, 0, 0, 0.3);
+        background: rgba(255, 255, 255, 0.08);
+      }
+
+      .step-number {
+        background: linear-gradient(135deg, #ff6b6b, #ffa500);
+        color: white;
+        width: 50px;
+        height: 50px;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-weight: bold;
+        font-size: 1.5rem;
+        margin-bottom: 1rem;
+        box-shadow: 0 5px 15px rgba(255, 107, 107, 0.4);
       }
 
       .step-image {
         width: 100%;
-        aspect-ratio: 16 / 9;
-        object-fit: cover;
-        border-radius: 12px;
-        background: linear-gradient(135deg, #1f2937, #4b5563);
-        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3),
-          0 0 100 0px rgba(0, 98, 255, 0.3);
-        filter: drop-shadow(0 0 20px rgba(0, 98, 255, 0.5));
-      }
-      .step-text {
-        padding: 2rem;
+        border-radius: 15px;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+        transition: transform 0.3s ease;
       }
 
-      /* Home Button Styling */
-      .home-btn {
+      .step-image:hover {
+        transform: scale(1.05);
+      }
+
+      .timeline {
+        position: relative;
+        padding-left: 2rem;
+      }
+
+      .timeline::before {
+        content: "";
         position: absolute;
-        top: 20px;
-        left: 20px;
-        background: #6366f1;
-        color: white;
-        border: none;
-        padding: 10px 16px;
-        border-radius: 6px;
-        cursor: pointer;
-        font-weight: 600;
-        font-size: 0.9em;
-        transition: background-color 0.3s ease, transform 0.1s;
-        text-decoration: none;
-        display: inline-flex;
-        align-items: center;
-        gap: 6px;
+        left: 1rem;
+        top: 0;
+        bottom: 0;
+        width: 2px;
+        background: linear-gradient(to bottom, #ff6b6b, #ffa500);
       }
 
-      .home-btn:hover {
-        background: #818cf8;
-        transform: translateY(-1px);
+      .timeline::after {
+        content: "";
+        position: absolute;
+        left: 0.5rem;
+        top: 0;
+        width: 1rem;
+        height: 1rem;
+        background: #ff6b6b;
+        border-radius: 50%;
+        border: 3px solid #fff;
+      }
+
+      .timeline-item {
+        position: relative;
+        margin-bottom: 3rem;
+      }
+
+      .timeline-item:last-child::after {
+        content: "";
+        position: absolute;
+        left: 0.5rem;
+        bottom: -1rem;
+        width: 1rem;
+        height: 1rem;
+        background: #ff6b6b;
+        border-radius: 50%;
+        border: 3px solid #fff;
       }
     </style>
   </head>
-  <body class="bg-black text-white min-h-screen">
-    <div class="container mx-auto px-4 py-12">
+  <body class="text-white">
+    <div class="hero-section">
       <h1
-        class="text-6xl md:text-6xl font-black text-blue-400 tracking-tighter mb-8 text-center"
+        class="text-5xl md:text-6xl font-black text-white tracking-tighter mb-4"
       >
-        How to Use Auto Email
+        <i class="fas fa-envelope mr-4"></i>How to Use Auto Email
       </h1>
+      <p class="text-xl text-gray-200 max-w-2xl mx-auto">
+        Follow these simple steps to set up your automated email response system
+      </p>
+    </div>
 
-      <!-- Step 1: Left -->
-      <div class="flex flex-col lg:flex-row items-center mb-8">
-        <img
-          src="images/email1.png"
-          alt="Step 1 Image"
-          class="step-image w-full lg:w-1/2 lg:mr-8 mb-8 lg:mb-0"
-        />
-        <div class="step-text w-full lg:w-1/2">
-          <p class="text-white mb-4">
-            First, I go into my own make.com account and export the full
-            scenario that I built. After exporting it, I email you the scenario
-            file so you can import it into your account. This gives you the
-            complete automation setup exactly how it runs for me.
-          </p>
+    <div class="container mx-auto px-4 py-12">
+      <div class="timeline">
+        <div class="timeline-item">
+          <div class="step-card">
+            <div class="flex flex-col lg:flex-row items-center">
+              <div class="lg:w-1/2 lg:pr-8 mb-6 lg:mb-0">
+                <div class="step-number">1</div>
+                <h3 class="text-2xl font-bold mb-4 text-blue-300">
+                  Export the Scenario
+                </h3>
+                <p class="text-gray-300 leading-relaxed">
+                  First, I go into my own make.com account and export the full
+                  scenario that I built. After exporting it, I email you the
+                  scenario file so you can import it into your account. This
+                  gives you the complete automation setup exactly how it runs
+                  for me.
+                </p>
+              </div>
+              <div class="lg:w-1/2">
+                <img
+                  src="images/email1.png"
+                  alt="Step 1 Image"
+                  class="step-image"
+                />
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="timeline-item">
+          <div class="step-card">
+            <div class="flex flex-col lg:flex-row-reverse items-center">
+              <div class="lg:w-1/2 lg:pl-8 mb-6 lg:mb-0">
+                <div class="step-number">2</div>
+                <h3 class="text-2xl font-bold mb-4 text-green-300">
+                  Import and Reconnect
+                </h3>
+                <p class="text-gray-300 leading-relaxed">
+                  Once I send you the exported scenario, you open your make.com
+                  account and import the file. Importing will recreate the
+                  entire workflow structure on your side, but you will reconnect
+                  the modules with your own Google, email, and Spreadsheet so
+                  everything runs under your account instead of mine.
+                </p>
+              </div>
+              <div class="lg:w-1/2">
+                <img
+                  src="images/wmail2.png"
+                  alt="Step 2 Image"
+                  class="step-image"
+                />
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="timeline-item">
+          <div class="step-card">
+            <div class="flex flex-col lg:flex-row items-center">
+              <div class="lg:w-1/2 lg:pr-8 mb-6 lg:mb-0">
+                <div class="step-number">3</div>
+                <h3 class="text-2xl font-bold mb-4 text-purple-300">
+                  Set Up Logging Spreadsheet
+                </h3>
+                <p class="text-gray-300 leading-relaxed">
+                  After the scenario is imported, you create a Spreadsheet in
+                  your drive and set up the first row with Timestamp, From
+                  Email, Subject, and body (body is what they sent you). This is
+                  just for logging all responses. You've already sent the email
+                  to them.
+                </p>
+              </div>
+              <div class="lg:w-1/2">
+                <img
+                  src="images/wmaile3.png"
+                  alt="Step 3 Image"
+                  class="step-image"
+                />
+              </div>
+            </div>
+          </div>
         </div>
       </div>
-
-      <div class="dashed-line"></div>
-
-      <!-- Step 2: Right -->
-      <div class="flex flex-col lg:flex-row-reverse items-center mb-8">
-        <img
-          src="images/wmail2.png"
-          alt="Step 2 Image"
-          class="step-image w-full lg:w-1/2 lg:ml-8 mb-8 lg:mb-0"
-        />
-        <div class="step-text w-full lg:w-1/2">
-          <p class="text-white mb-4">
-            Once I send you the exported scenario, you open your make.com
-            account and import the file. Importing will recreate the entire
-            workflow structure on your side, but you will reconnect the modules
-            with your own Google, email, and Spreadsheet so everything runs
-            under your account instead of mine.
-          </p>
-        </div>
-      </div>
-
-      <!-- Step 3: Left -->
-      <div class="flex flex-col lg:flex-row items-center mb-8">
-        <img
-          src="images/wmaile3.png"
-          alt="Step 3 Image"
-          class="step-image w-full lg:w-1/2 lg:mr-8 mb-8 lg:mb-0"
-        />
-        <div class="step-text w-full lg:w-1/2">
-          <p class="text-white mb-4">
-            After the scenario is imported, you create a Spreadsheet in your
-            drive and set up the first row with Timestamp, From Email, Subject,
-            and body (body is what they sent you). This is just for logging all
-            responses. You've already sent the email to them.
-          </p>
-        </div>
-      </div>
-
-      <div class="dashed-line"></div>
     </div>
   </body>
 </html>

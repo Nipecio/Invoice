@@ -5,172 +5,297 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Auto Invoice Instructions</title>
     <script src="https://cdn.tailwindcss.com"></script>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
+    />
     <style>
       @import url("https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap");
       body {
         font-family: "Inter", sans-serif;
+        background: linear-gradient(
+          135deg,
+          #0f0f23 0%,
+          #1a1a2e 50%,
+          #16213e 100%
+        );
+        min-height: 100vh;
+      }
+
+      .hero-section {
+        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        padding: 4rem 2rem;
+        text-align: center;
+        border-radius: 0 0 50px 50px;
+        margin-bottom: 3rem;
+        box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+      }
+
+      .step-card {
+        background: rgba(255, 255, 255, 0.05);
+        backdrop-filter: blur(10px);
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        border-radius: 20px;
+        padding: 2rem;
+        margin-bottom: 2rem;
+        transition: all 0.3s ease;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+      }
+
+      .step-card:hover {
+        transform: translateY(-10px);
+        box-shadow: 0 20px 50px rgba(0, 0, 0, 0.3);
+        background: rgba(255, 255, 255, 0.08);
+      }
+
+      .step-number {
+        background: linear-gradient(135deg, #667eea, #764ba2);
+        color: white;
+        width: 50px;
+        height: 50px;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-weight: bold;
+        font-size: 1.5rem;
+        margin-bottom: 1rem;
+        box-shadow: 0 5px 15px rgba(102, 126, 234, 0.4);
       }
 
       .step-image {
         width: 100%;
-        aspect-ratio: 16 / 9;
-        object-fit: cover;
-        border-radius: 12px;
-        background: linear-gradient(135deg, #1f2937, #4b5563);
-        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3),
-          0 0 100 0px rgba(0, 98, 255, 0.3);
-        filter: drop-shadow(0 0 20px rgba(0, 98, 255, 0.5));
-      }
-      .step-text {
-        padding: 2rem;
+        border-radius: 15px;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+        transition: transform 0.3s ease;
       }
 
-      /* Home Button Styling */
-      .home-btn {
+      .step-image:hover {
+        transform: scale(1.05);
+      }
+
+      .timeline {
+        position: relative;
+        padding-left: 2rem;
+      }
+
+      .timeline::before {
+        content: "";
         position: absolute;
-        top: 20px;
-        left: 20px;
-        background: #6366f1;
-        color: white;
-        border: none;
-        padding: 10px 16px;
-        border-radius: 6px;
-        cursor: pointer;
-        font-weight: 600;
-        font-size: 0.9em;
-        transition: background-color 0.3s ease, transform 0.1s;
-        text-decoration: none;
-        display: inline-flex;
-        align-items: center;
-        gap: 6px;
+        left: 1rem;
+        top: 0;
+        bottom: 0;
+        width: 2px;
+        background: linear-gradient(to bottom, #667eea, #764ba2);
       }
 
-      .home-btn:hover {
-        background: #818cf8;
-        transform: translateY(-1px);
+      .timeline::after {
+        content: "";
+        position: absolute;
+        left: 0.5rem;
+        top: 0;
+        width: 1rem;
+        height: 1rem;
+        background: #667eea;
+        border-radius: 50%;
+        border: 3px solid #fff;
+      }
+
+      .timeline-item {
+        position: relative;
+        margin-bottom: 3rem;
+      }
+
+      .timeline-item:last-child::after {
+        content: "";
+        position: absolute;
+        left: 0.5rem;
+        bottom: -1rem;
+        width: 1rem;
+        height: 1rem;
+        background: #667eea;
+        border-radius: 50%;
+        border: 3px solid #fff;
       }
     </style>
   </head>
-  <body class="bg-black text-white min-h-screen">
-    <div class="container mx-auto px-4 py-12">
+  <body class="text-white">
+    <div class="hero-section">
       <h1
-        class="text-6xl md:text-6xl font-black text-blue-400 tracking-tighter mb-8 text-center"
+        class="text-5xl md:text-6xl font-black text-white tracking-tighter mb-4"
       >
-        How to Use Auto Invoice
+        <i class="fas fa-file-invoice-dollar mr-4"></i>How to Use Auto Invoice
       </h1>
+      <p class="text-xl text-gray-200 max-w-2xl mx-auto">
+        Follow these simple steps to set up your automated invoicing system
+      </p>
+    </div>
 
-      <!-- Step 1: Left -->
-      <div class="flex flex-col lg:flex-row items-center mb-8">
-        <img
-          src="images/make1.png"
-          alt="Step 1 Image"
-          class="step-image w-full lg:w-1/2 lg:mr-8 mb-8 lg:mb-0"
-        />
-        <div class="step-text w-full lg:w-1/2">
-          <p class="text-white mb-4">
-            First, I go into my own make.com account and export the full
-            scenario that I built. After exporting it, I email you the scenario
-            file along with my website code so you can import it into your
-            account. This gives you the complete automation setup exactly how it
-            runs for me.
-          </p>
+    <div class="container mx-auto px-4 py-12">
+      <div class="timeline">
+        <div class="timeline-item">
+          <div class="step-card">
+            <div class="flex flex-col lg:flex-row items-center">
+              <div class="lg:w-1/2 lg:pr-8 mb-6 lg:mb-0">
+                <div class="step-number">1</div>
+                <h3 class="text-2xl font-bold mb-4 text-blue-300">
+                  Export the Scenario
+                </h3>
+                <p class="text-gray-300 leading-relaxed">
+                  First, I go into my own make.com account and export the full
+                  scenario that I built. After exporting it, I email you the
+                  scenario file along with my website code so you can import it
+                  into your account. This gives you the complete automation
+                  setup exactly how it runs for me.
+                </p>
+              </div>
+              <div class="lg:w-1/2">
+                <img
+                  src="images/make1.png"
+                  alt="Step 1 Image"
+                  class="step-image"
+                />
+              </div>
+            </div>
+          </div>
         </div>
-      </div>
 
-      <div class="dashed-line"></div>
-
-      <!-- Step 2: Right -->
-      <div class="flex flex-col lg:flex-row-reverse items-center mb-8">
-        <img
-          src="images/make2.png"
-          alt="Step 2 Image"
-          class="step-image w-full lg:w-1/2 lg:ml-8 mb-8 lg:mb-0"
-        />
-        <div class="step-text w-full lg:w-1/2">
-          <p class="text-white mb-4">
-            Once I send you the exported scenario, you open your make.com
-            account and import the file. Importing will recreate the entire
-            workflow structure on your side, but you will reconnect the modules
-            with your own Google, email, and other services so everything runs
-            under your account instead of mine.
-          </p>
+        <div class="timeline-item">
+          <div class="step-card">
+            <div class="flex flex-col lg:flex-row-reverse items-center">
+              <div class="lg:w-1/2 lg:pl-8 mb-6 lg:mb-0">
+                <div class="step-number">2</div>
+                <h3 class="text-2xl font-bold mb-4 text-green-300">
+                  Import and Reconnect
+                </h3>
+                <p class="text-gray-300 leading-relaxed">
+                  Once I send you the exported scenario, you open your make.com
+                  account and import the file. Importing will recreate the
+                  entire workflow structure on your side, but you will reconnect
+                  the modules with your own Google, email, and other services so
+                  everything runs under your account instead of mine.
+                </p>
+              </div>
+              <div class="lg:w-1/2">
+                <img
+                  src="images/make2.png"
+                  alt="Step 2 Image"
+                  class="step-image"
+                />
+              </div>
+            </div>
+          </div>
         </div>
-      </div>
 
-      <!-- Step 3: Left -->
-      <div class="flex flex-col lg:flex-row items-center mb-8">
-        <img
-          src="images/make3.png"
-          alt="Step 3 Image"
-          class="step-image w-full lg:w-1/2 lg:mr-8 mb-8 lg:mb-0"
-        />
-        <div class="step-text w-full lg:w-1/2">
-          <p class="text-white mb-4">
-            After the scenario is imported, you create a brand-new webhook
-            inside your Make.com account. This gives you a unique webhook URL.
-            You then open my website code and replace the old webhook address
-            with your new one so my site will send invoice data directly to your
-            scenario.
-          </p>
+        <div class="timeline-item">
+          <div class="step-card">
+            <div class="flex flex-col lg:flex-row items-center">
+              <div class="lg:w-1/2 lg:pr-8 mb-6 lg:mb-0">
+                <div class="step-number">3</div>
+                <h3 class="text-2xl font-bold mb-4 text-purple-300">
+                  Create New Webhook
+                </h3>
+                <p class="text-gray-300 leading-relaxed">
+                  After the scenario is imported, you create a brand-new webhook
+                  inside your Make.com account. This gives you a unique webhook
+                  URL. You then open my website code and replace the old webhook
+                  address with your new one so my site will send invoice data
+                  directly to your scenario.
+                </p>
+              </div>
+              <div class="lg:w-1/2">
+                <img
+                  src="images/make3.png"
+                  alt="Step 3 Image"
+                  class="step-image"
+                />
+              </div>
+            </div>
+          </div>
         </div>
-      </div>
 
-      <div class="dashed-line"></div>
-
-      <!-- Step 4: Right -->
-      <div class="flex flex-col lg:flex-row-reverse items-center mb-8">
-        <img
-          src="images/make4.png"
-          alt="Step 4 Image"
-          class="step-image w-full lg:w-1/2 lg:ml-8 mb-8 lg:mb-0"
-        />
-        <div class="step-text w-full lg:w-1/2">
-          <p class="text-white mb-4">
-            Next, you create a new Google Spreadsheet in your Google account. In
-            the first column, you type all the values that will appear in the
-            invoice—these must match exactly what my website sends (name,
-            service, price, date, total, etc.). Every time someone fills out the
-            form on my site, these values will get logged into the sheet through
-            your scenario.
-          </p>
+        <div class="timeline-item">
+          <div class="step-card">
+            <div class="flex flex-col lg:flex-row-reverse items-center">
+              <div class="lg:w-1/2 lg:pl-8 mb-6 lg:mb-0">
+                <div class="step-number">4</div>
+                <h3 class="text-2xl font-bold mb-4 text-yellow-300">
+                  Set Up Spreadsheet
+                </h3>
+                <p class="text-gray-300 leading-relaxed">
+                  Next, you create a new Google Spreadsheet in your Google
+                  account. In the first column, you type all the values that
+                  will appear in the invoice—these must match exactly what my
+                  website sends (name, service, price, date, total, etc.). Every
+                  time someone fills out the form on my site, these values will
+                  get logged into the sheet through your scenario.
+                </p>
+              </div>
+              <div class="lg:w-1/2">
+                <img
+                  src="images/make4.png"
+                  alt="Step 4 Image"
+                  class="step-image"
+                />
+              </div>
+            </div>
+          </div>
         </div>
-      </div>
 
-      <!-- Step 5: Left -->
-      <div class="flex flex-col lg:flex-row items-center mb-8">
-        <img
-          src="images/make5.png"
-          alt="Step 5 Image"
-          class="step-image w-full lg:w-1/2 lg:mr-8 mb-8 lg:mb-0"
-        />
-        <div class="step-text w-full lg:w-1/2">
-          <p class="text-white mb-4">
-            Then, you create a Google Doc that will serve as the invoice
-            template. Inside the document, you type all the same field names
-            from the spreadsheet, but with double brackets like this:
-            {{customer_name}}, {{service}}, {{price}}, {{total}}. The spelling
-            must match the spreadsheet exactly. Make.com will automatically
-            replace those brackets with real data.
-          </p>
+        <div class="timeline-item">
+          <div class="step-card">
+            <div class="flex flex-col lg:flex-row items-center">
+              <div class="lg:w-1/2 lg:pr-8 mb-6 lg:mb-0">
+                <div class="step-number">5</div>
+                <h3 class="text-2xl font-bold mb-4 text-pink-300">
+                  Create Invoice Template
+                </h3>
+                <p class="text-gray-300 leading-relaxed">
+                  Then, you create a Google Doc that will serve as the invoice
+                  template. Inside the document, you type all the same field
+                  names from the spreadsheet, but with double brackets like
+                  this: {{customer_name}}, {{service}}, {{price}}, {{total}}.
+                  The spelling must match the spreadsheet exactly. Make.com will
+                  automatically replace those brackets with real data.
+                </p>
+              </div>
+              <div class="lg:w-1/2">
+                <img
+                  src="images/make5.png"
+                  alt="Step 5 Image"
+                  class="step-image"
+                />
+              </div>
+            </div>
+          </div>
         </div>
-      </div>
 
-      <!-- Step 6: Right -->
-      <div class="flex flex-col lg:flex-row-reverse items-center mb-8">
-        <img
-          src="images/make6.png"
-          alt="Step 6 Image"
-          class="step-image w-full lg:w-1/2 lg:ml-8 mb-8 lg:mb-0"
-        />
-        <div class="step-text w-full lg:w-1/2">
-          <p class="text-white mb-4">
-            Finally, you configure the Google Docs → PDF module so it downloads
-            the generated invoice as a PDF. You connect it with the same Google
-            account used for the first document. Then you update the email
-            module so it sends the PDF to your business email and to the
-            customer. This ensures both you and the client receive a copy of
-            every invoice automatically.
-          </p>
+        <div class="timeline-item">
+          <div class="step-card">
+            <div class="flex flex-col lg:flex-row-reverse items-center">
+              <div class="lg:w-1/2 lg:pl-8 mb-6 lg:mb-0">
+                <div class="step-number">6</div>
+                <h3 class="text-2xl font-bold mb-4 text-cyan-300">
+                  Configure PDF and Email
+                </h3>
+                <p class="text-gray-300 leading-relaxed">
+                  Finally, you configure the Google Docs → PDF module so it
+                  downloads the generated invoice as a PDF. You connect it with
+                  the same Google account used for the first document. Then you
+                  update the email module so it sends the PDF to your business
+                  email and to the customer. This ensures both you and the
+                  client receive a copy of every invoice automatically.
+                </p>
+              </div>
+              <div class="lg:w-1/2">
+                <img
+                  src="images/make6.png"
+                  alt="Step 6 Image"
+                  class="step-image"
+                />
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     </div>
