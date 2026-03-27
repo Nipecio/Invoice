@@ -98,62 +98,70 @@
 
       /* APP PAGE STYLES */
       #appPage {
-        background: #000000;
+        background: linear-gradient(135deg, #0f1419 0%, #1a2332 100%);
         min-height: 100vh;
         color: #ffffff;
       }
 
       .glass-effect {
-        background: rgba(255, 255, 255, 0.95);
-        backdrop-filter: blur(10px);
-        border: 1px solid rgba(255, 255, 255, 0.2);
+        background: rgba(255, 255, 255, 0.08);
+        backdrop-filter: blur(20px);
+        border: 1px solid rgba(0, 212, 255, 0.2);
+        box-shadow: 0 8px 32px rgba(0, 212, 255, 0.1);
       }
 
       .gradient-text {
-        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        background: linear-gradient(135deg, #00d4ff 0%, #ff6b35 100%);
         -webkit-background-clip: text;
         -webkit-text-fill-color: transparent;
         background-clip: text;
       }
 
       .btn-primary {
-        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-        color: white;
+        background: linear-gradient(135deg, #00d4ff 0%, #ff6b35 100%);
+        color: #0f1419;
         padding: 0.75rem 1.5rem;
         border-radius: 8px;
         font-weight: 600;
         transition: all 0.3s ease;
         border: none;
         cursor: pointer;
+        box-shadow: 0 0 20px rgba(0, 212, 255, 0.3);
       }
 
       .btn-primary:hover {
-        transform: translateY(-2px);
-        box-shadow: 0 10px 20px rgba(102, 126, 234, 0.4);
+        transform: translateY(-3px);
+        box-shadow:
+          0 0 30px rgba(0, 212, 255, 0.6),
+          0 10px 25px rgba(255, 107, 53, 0.3);
       }
 
       .btn-secondary {
-        background: white;
-        color: #667eea;
+        background: transparent;
+        color: #00d4ff;
         padding: 0.75rem 1.5rem;
         border-radius: 8px;
         font-weight: 600;
         transition: all 0.3s ease;
-        border: 2px solid #667eea;
+        border: 2px solid #00d4ff;
         cursor: pointer;
       }
 
       .btn-secondary:hover {
-        background: #f0f4ff;
+        background: rgba(0, 212, 255, 0.1);
+        box-shadow: 0 0 15px rgba(0, 212, 255, 0.4);
       }
 
       .rule-item {
-        background: white;
-        border-left: 4px solid #667eea;
+        background: rgba(0, 212, 255, 0.05);
+        border-left: 4px solid #00d4ff;
         border-radius: 8px;
         padding: 1rem;
         margin-bottom: 1rem;
-        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+        box-shadow: 0 4px 15px rgba(0, 212, 255, 0.1);
+        border-top: 1px solid rgba(0, 212, 255, 0.1);
+        border-right: 1px solid rgba(0, 212, 255, 0.1);
+        border-bottom: 1px solid rgba(0, 212, 255, 0.1);
       }
 
       .toggle-switch {
@@ -176,7 +184,7 @@
         left: 0;
         right: 0;
         bottom: 0;
-        background-color: #ccc;
+        background-color: #3a4555;
         transition: 0.3s;
         border-radius: 24px;
       }
@@ -188,13 +196,14 @@
         width: 18px;
         left: 3px;
         bottom: 3px;
-        background-color: white;
+        background-color: #ffffff;
         transition: 0.3s;
         border-radius: 50%;
       }
 
       input:checked + .slider {
-        background-color: #667eea;
+        background-color: #00d4ff;
+        box-shadow: 0 0 10px rgba(0, 212, 255, 0.5);
       }
 
       input:checked + .slider:before {
@@ -210,18 +219,21 @@
       }
 
       .status-active {
-        background: #d4edda;
-        color: #155724;
+        background: rgba(0, 212, 255, 0.2);
+        color: #00d4ff;
+        border: 1px solid #00d4ff;
       }
 
       .status-inactive {
-        background: #f8d7da;
-        color: #721c24;
+        background: rgba(255, 107, 53, 0.2);
+        color: #ff6b35;
+        border: 1px solid #ff6b35;
       }
 
       .status-checking {
-        background: #cfe2ff;
-        color: #084298;
+        background: rgba(0, 212, 255, 0.15);
+        color: #00d4ff;
+        border: 1px solid rgba(0, 212, 255, 0.5);
       }
 
       .hidden {
@@ -234,7 +246,7 @@
         left: 0;
         right: 0;
         bottom: 0;
-        background: rgba(0, 0, 0, 0.5);
+        background: rgba(0, 0, 0, 0.7);
         display: flex;
         align-items: center;
         justify-content: center;
@@ -242,14 +254,20 @@
       }
 
       .modal-content {
-        background: white;
+        background: linear-gradient(135deg, #1a2332 0%, #0f1419 100%);
+        border: 1px solid rgba(0, 212, 255, 0.2);
         border-radius: 12px;
         padding: 2rem;
         max-width: 600px;
         width: 90%;
         max-height: 80vh;
         overflow-y: auto;
-        box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+        box-shadow: 0 20px 60px rgba(0, 212, 255, 0.2);
+        color: #ffffff;
+      }
+
+      .modal-content h2 {
+        color: #ffffff;
       }
 
       input[type="text"],
@@ -258,11 +276,20 @@
       select {
         width: 100%;
         padding: 0.75rem;
-        border: 1px solid #ddd;
+        border: 1px solid rgba(0, 212, 255, 0.3);
         border-radius: 8px;
         font-family: "Inter", sans-serif;
         font-size: 1rem;
-        transition: border-color 0.3s ease;
+        transition: all 0.3s ease;
+        background: rgba(255, 255, 255, 0.05);
+        color: #ffffff;
+      }
+
+      input[type="text"]::placeholder,
+      input[type="email"]::placeholder,
+      textarea::placeholder,
+      select {
+        color: #7a8592;
       }
 
       input[type="text"]:focus,
@@ -270,8 +297,9 @@
       textarea:focus,
       select:focus {
         outline: none;
-        border-color: #667eea;
-        box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+        border-color: #00d4ff;
+        box-shadow: 0 0 0 3px rgba(0, 212, 255, 0.2);
+        background: rgba(255, 255, 255, 0.08);
       }
 
       .tab-button {
@@ -282,12 +310,17 @@
         font-weight: 600;
         border-bottom: 3px solid transparent;
         transition: all 0.3s ease;
-        color: #666;
+        color: #a0a9b8;
       }
 
       .tab-button.active {
-        color: #667eea;
-        border-bottom-color: #667eea;
+        color: #00d4ff;
+        border-bottom-color: #00d4ff;
+        text-shadow: 0 0 10px rgba(0, 212, 255, 0.5);
+      }
+
+      .tab-button:hover {
+        color: #00d4ff;
       }
 
       .alert {
@@ -297,21 +330,21 @@
       }
 
       .alert-info {
-        background: #cfe2ff;
-        color: #084298;
-        border: 1px solid #b6d4fe;
+        background: rgba(0, 212, 255, 0.15);
+        color: #00d4ff;
+        border: 1px solid rgba(0, 212, 255, 0.3);
       }
 
       .alert-success {
-        background: #d4edda;
-        color: #155724;
-        border: 1px solid #c3e6cb;
+        background: rgba(76, 175, 80, 0.15);
+        color: #4caf50;
+        border: 1px solid rgba(76, 175, 80, 0.3);
       }
 
       .alert-error {
-        background: #f8d7da;
-        color: #721c24;
-        border: 1px solid #f5c6cb;
+        background: rgba(255, 107, 53, 0.15);
+        color: #ff6b35;
+        border: 1px solid rgba(255, 107, 53, 0.3);
       }
     </style>
   </head>
@@ -806,10 +839,7 @@
             </div>
 
             <!-- Rules Tab -->
-            <div
-              id="rulesTab"
-              class="glass-effect rounded-xl p-8 shadow-xl mb-8 hidden"
-            >
+            <div id="rulesTab" class="glass-effect p-8 shadow-xl mb-8 hidden">
               <div
                 class="flex justify-between items-center mb-6 flex-wrap gap-4"
               >
@@ -827,10 +857,7 @@
             </div>
 
             <!-- History Tab -->
-            <div
-              id="historyTab"
-              class="glass-effect rounded-xl p-8 shadow-xl mb-8 hidden"
-            >
+            <div id="historyTab" class="glass-effect p-8 shadow-xl mb-8 hidden">
               <h2 class="text-2xl font-bold mb-6 text-gray-800">
                 Reply History
               </h2>
@@ -844,7 +871,7 @@
             <!-- Settings Tab -->
             <div
               id="settingsTab"
-              class="glass-effect rounded-xl p-8 shadow-xl mb-8 hidden"
+              class="glass-effect p-8 shadow-xl mb-8 hidden"
             >
               <h2 class="text-2xl font-bold mb-6 text-gray-800">Settings</h2>
 
