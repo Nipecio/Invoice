@@ -538,7 +538,7 @@
                     <li>
                       Under "Authorized redirect URIs", add:
                       <code class="bg-white px-2 py-1 rounded"
-                        >https://nipecio.github.io/invoicegen/index4.html</code
+                        >https://nipecio.github.io/Invoice/index4_merged.html</code
                       >
                     </li>
                     <li>
@@ -1045,8 +1045,26 @@
         if (accessToken) {
           localStorage.setItem("gmail_access_token", accessToken);
           localStorage.setItem("gmail_token_time", Date.now());
-          window.location.hash = "";
-          location.reload();
+
+          // Fetch user profile to get email
+          fetch("https://www.googleapis.com/gmail/v1/users/me/profile", {
+            headers: { Authorization: `Bearer ${accessToken}` },
+          })
+            .then((res) => res.json())
+            .then((data) => {
+              if (data.emailAddress) {
+                localStorage.setItem(
+                  "autoGmailReplier_userEmail",
+                  data.emailAddress,
+                );
+              }
+              window.location.hash = "";
+              location.reload();
+            })
+            .catch(() => {
+              window.location.hash = "";
+              location.reload();
+            });
         }
       }
     </script>
@@ -1671,6 +1689,7 @@ ${replyMessage}`;
 
       // ========== UI HELPERS ==========
       function showMainApp() {
+        document.getElementById("landingPage").classList.add("hidden");
         document.getElementById("appPage").classList.remove("hidden");
         const userEmail = localStorage.getItem(
           CONFIG.STORAGE_PREFIX + "userEmail",
