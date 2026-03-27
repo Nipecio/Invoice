@@ -1,219 +1,1013 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Auto Email Instructions</title>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Auto Gmail Replier</title>
     <script src="https://cdn.tailwindcss.com"></script>
-    <link
-      rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
-    />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <style>
-      @import url("https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap");
-      body {
-        font-family: "Inter", sans-serif;
-        background: linear-gradient(
-          135deg,
-          #0f0f23 0%,
-          #1a1a2e 50%,
-          #16213e 100%
-        );
-        min-height: 100vh;
-      }
-
-      .hero-section {
-        background: linear-gradient(135deg, #ff6b6b 0%, #ffa500 100%);
-        padding: 4rem 2rem;
-        text-align: center;
-        border-radius: 0 0 50px 50px;
-        margin-bottom: 3rem;
-        box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
-      }
-
-      .step-card {
-        background: rgba(255, 255, 255, 0.05);
-        backdrop-filter: blur(10px);
-        border: 1px solid rgba(255, 255, 255, 0.1);
-        border-radius: 20px;
-        padding: 2rem;
-        margin-bottom: 2rem;
-        transition: all 0.3s ease;
-        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
-      }
-
-      .step-card:hover {
-        transform: translateY(-10px);
-        box-shadow: 0 20px 50px rgba(0, 0, 0, 0.3);
-        background: rgba(255, 255, 255, 0.08);
-      }
-
-      .step-number {
-        background: linear-gradient(135deg, #ff6b6b, #ffa500);
-        color: white;
-        width: 50px;
-        height: 50px;
-        border-radius: 50%;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        font-weight: bold;
-        font-size: 1.5rem;
-        margin-bottom: 1rem;
-        box-shadow: 0 5px 15px rgba(255, 107, 107, 0.4);
-      }
-
-      .step-image {
-        width: 100%;
-        border-radius: 15px;
-        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
-        transition: transform 0.3s ease;
-      }
-
-      .step-image:hover {
-        transform: scale(1.05);
-      }
-
-      .timeline {
-        position: relative;
-        padding-left: 2rem;
-      }
-
-      .timeline::before {
-        content: "";
-        position: absolute;
-        left: 1rem;
-        top: 0;
-        bottom: 0;
-        width: 2px;
-        background: linear-gradient(to bottom, #ff6b6b, #ffa500);
-      }
-
-      .timeline::after {
-        content: "";
-        position: absolute;
-        left: 0.5rem;
-        top: 0;
-        width: 1rem;
-        height: 1rem;
-        background: #ff6b6b;
-        border-radius: 50%;
-        border: 3px solid #fff;
-      }
-
-      .timeline-item {
-        position: relative;
-        margin-bottom: 3rem;
-      }
-
-      .timeline-item:last-child::after {
-        content: "";
-        position: absolute;
-        left: 0.5rem;
-        bottom: -1rem;
-        width: 1rem;
-        height: 1rem;
-        background: #ff6b6b;
-        border-radius: 50%;
-        border: 3px solid #fff;
-      }
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap');
+        body {
+            font-family: 'Inter', sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+        }
+        .glass-effect {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+        .gradient-text {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        .btn-primary {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 0.75rem 1.5rem;
+            border-radius: 8px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            border: none;
+            cursor: pointer;
+        }
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 20px rgba(102, 126, 234, 0.4);
+        }
+        .btn-secondary {
+            background: white;
+            color: #667eea;
+            padding: 0.75rem 1.5rem;
+            border-radius: 8px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            border: 2px solid #667eea;
+            cursor: pointer;
+        }
+        .btn-secondary:hover {
+            background: #f0f4ff;
+        }
+        .rule-item {
+            background: white;
+            border-left: 4px solid #667eea;
+            border-radius: 8px;
+            padding: 1rem;
+            margin-bottom: 1rem;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+        }
+        .toggle-switch {
+            position: relative;
+            display: inline-block;
+            width: 50px;
+            height: 24px;
+        }
+        .toggle-switch input {
+            opacity: 0;
+            width: 0;
+            height: 0;
+        }
+        .slider {
+            position: absolute;
+            cursor: pointer;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: #ccc;
+            transition: 0.3s;
+            border-radius: 24px;
+        }
+        .slider:before {
+            position: absolute;
+            content: "";
+            height: 18px;
+            width: 18px;
+            left: 3px;
+            bottom: 3px;
+            background-color: white;
+            transition: 0.3s;
+            border-radius: 50%;
+        }
+        input:checked + .slider {
+            background-color: #667eea;
+        }
+        input:checked + .slider:before {
+            transform: translateX(26px);
+        }
+        .status-badge {
+            display: inline-block;
+            padding: 0.25rem 0.75rem;
+            border-radius: 20px;
+            font-size: 0.875rem;
+            font-weight: 600;
+        }
+        .status-active {
+            background: #d4edda;
+            color: #155724;
+        }
+        .status-inactive {
+            background: #f8d7da;
+            color: #721c24;
+        }
+        .status-checking {
+            background: #cfe2ff;
+            color: #084298;
+        }
+        .hidden {
+            display: none !important;
+        }
+        .modal-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0.5);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 1000;
+        }
+        .modal-content {
+            background: white;
+            border-radius: 12px;
+            padding: 2rem;
+            max-width: 600px;
+            width: 90%;
+            max-height: 80vh;
+            overflow-y: auto;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+        }
+        input[type="text"], input[type="email"], textarea, select {
+            width: 100%;
+            padding: 0.75rem;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            font-family: 'Inter', sans-serif;
+            font-size: 1rem;
+            transition: border-color 0.3s ease;
+        }
+        input[type="text"]:focus, input[type="email"]:focus, textarea:focus, select:focus {
+            outline: none;
+            border-color: #667eea;
+            box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+        }
+        .tab-button {
+            padding: 0.75rem 1.5rem;
+            background: transparent;
+            border: none;
+            cursor: pointer;
+            font-weight: 600;
+            border-bottom: 3px solid transparent;
+            transition: all 0.3s ease;
+            color: #666;
+        }
+        .tab-button.active {
+            color: #667eea;
+            border-bottom-color: #667eea;
+        }
+        .alert {
+            padding: 1rem;
+            border-radius: 8px;
+            margin-bottom: 1rem;
+        }
+        .alert-info {
+            background: #cfe2ff;
+            color: #084298;
+            border: 1px solid #b6d4fe;
+        }
+        .alert-success {
+            background: #d4edda;
+            color: #155724;
+            border: 1px solid #c3e6cb;
+        }
+        .alert-error {
+            background: #f8d7da;
+            color: #721c24;
+            border: 1px solid #f5c6cb;
+        }
     </style>
-  </head>
-  <body class="text-white">
-    <div class="hero-section">
-      <h1
-        class="text-5xl md:text-6xl font-black text-white tracking-tighter mb-4"
-      >
-        <i class="fas fa-envelope mr-4"></i>How to Use Auto Email
-      </h1>
-      <p class="text-xl text-gray-200 max-w-2xl mx-auto">
-        Follow these simple steps to set up your automated email response system
-      </p>
+</head>
+<body>
+    <div class="min-h-screen py-8 px-4">
+        <div class="max-w-6xl mx-auto">
+            <!-- Header -->
+            <div class="glass-effect rounded-xl p-8 mb-8 shadow-xl">
+                <div class="flex items-center justify-between mb-4">
+                    <div>
+                        <h1 class="text-4xl font-bold gradient-text mb-2">
+                            <i class="fas fa-envelope-circle-check mr-3"></i>Auto Gmail Replier
+                        </h1>
+                        <p class="text-gray-600">Automatically reply to emails based on your custom rules</p>
+                    </div>
+                    <div id="authStatus" class="text-right">
+                        <div id="loginSection">
+                            <button onclick="loginWithGoogle()" class="btn-primary">
+                                <i class="fab fa-google mr-2"></i>Login with Gmail
+                            </button>
+                        </div>
+                        <div id="loggedInSection" class="hidden">
+                            <p class="text-sm text-gray-600 mb-2">Logged in as: <span id="userEmail" class="font-bold"></span></p>
+                            <button onclick="logout()" class="btn-secondary">Logout</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Setup Guide (shown first) -->
+            <div id="setupGuide" class="glass-effect rounded-xl p-8 mb-8 shadow-xl">
+                <h2 class="text-2xl font-bold mb-6 text-gray-800">
+                    <i class="fas fa-gear mr-2 text-blue-500"></i>Setup Guide
+                </h2>
+                
+                <div class="space-y-6">
+                    <div class="bg-blue-50 border-l-4 border-blue-500 p-4 rounded">
+                        <h3 class="font-bold text-blue-900 mb-2">Step 1: Create Google Cloud Project</h3>
+                        <ol class="list-decimal list-inside text-blue-800 space-y-2 ml-2">
+                            <li>Go to <a href="https://console.cloud.google.com" target="_blank" class="underline font-bold">Google Cloud Console</a></li>
+                            <li>Create a new project named "Auto Gmail Replier"</li>
+                            <li>Enable the <strong>Gmail API</strong></li>
+                            <li>Go to "Credentials" and create an "OAuth 2.0 Client ID" (Web application)</li>
+                            <li>Add redirect URI: <code class="bg-white px-2 py-1 rounded text-sm">https://yourwebsite.com/callback</code></li>
+                        </ol>
+                    </div>
+
+                    <div class="bg-green-50 border-l-4 border-green-500 p-4 rounded">
+                        <h3 class="font-bold text-green-900 mb-2">Step 2: Configure Credentials</h3>
+                        <div class="space-y-4">
+                            <div>
+                                <label class="block text-sm font-bold text-gray-700 mb-2">Client ID:</label>
+                                <input type="text" id="clientId" placeholder="Paste your Client ID here" class="bg-white">
+                            </div>
+                            <div>
+                                <label class="block text-sm font-bold text-gray-700 mb-2">API Key (optional):</label>
+                                <input type="text" id="apiKey" placeholder="Paste your API Key here" class="bg-white">
+                            </div>
+                            <button onclick="saveCredentials()" class="btn-primary">Save Credentials</button>
+                            <p class="text-xs text-gray-600 mt-2">Your credentials are stored locally in your browser and never sent to external servers.</p>
+                        </div>
+                    </div>
+
+                    <div class="bg-purple-50 border-l-4 border-purple-500 p-4 rounded">
+                        <h3 class="font-bold text-purple-900 mb-2">Step 3: Authenticate Gmail</h3>
+                        <p class="text-purple-800 mb-3">Once you save your credentials, click "Login with Gmail" to authorize the app to access your emails.</p>
+                        <button onclick="goToLogin()" class="btn-primary">Go to Login</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Main App (hidden until logged in) -->
+            <div id="mainApp" class="hidden">
+                <!-- Tabs -->
+                <div class="glass-effect rounded-t-xl shadow-xl flex border-b">
+                    <button class="tab-button active" onclick="switchTab('dashboard')">
+                        <i class="fas fa-chart-line mr-2"></i>Dashboard
+                    </button>
+                    <button class="tab-button" onclick="switchTab('rules')">
+                        <i class="fas fa-rules mr-2"></i>Manage Rules
+                    </button>
+                    <button class="tab-button" onclick="switchTab('history')">
+                        <i class="fas fa-history mr-2"></i>Reply History
+                    </button>
+                    <button class="tab-button" onclick="switchTab('settings')">
+                        <i class="fas fa-cog mr-2"></i>Settings
+                    </button>
+                </div>
+
+                <!-- Dashboard Tab -->
+                <div id="dashboardTab" class="glass-effect rounded-b-xl p-8 shadow-xl mb-8">
+                    <h2 class="text-2xl font-bold mb-6 text-gray-800">Dashboard</h2>
+                    
+                    <div class="grid grid-cols-3 gap-4 mb-8">
+                        <div class="bg-gradient-to-br from-blue-50 to-blue-100 p-6 rounded-lg">
+                            <div class="text-3xl font-bold text-blue-600" id="totalRules">0</div>
+                            <div class="text-gray-600 text-sm font-medium">Active Rules</div>
+                        </div>
+                        <div class="bg-gradient-to-br from-green-50 to-green-100 p-6 rounded-lg">
+                            <div class="text-3xl font-bold text-green-600" id="totalReplies">0</div>
+                            <div class="text-gray-600 text-sm font-medium">Total Replies Sent</div>
+                        </div>
+                        <div class="bg-gradient-to-br from-purple-50 to-purple-100 p-6 rounded-lg">
+                            <div class="text-3xl font-bold text-purple-600" id="systemStatus">Idle</div>
+                            <div class="text-gray-600 text-sm font-medium">System Status</div>
+                        </div>
+                    </div>
+
+                    <div class="bg-blue-50 border-l-4 border-blue-500 p-4 rounded mb-6">
+                        <h3 class="font-bold text-blue-900 mb-2">Auto-Reply Status</h3>
+                        <div class="flex items-center justify-between">
+                            <div>
+                                <p class="text-blue-800 text-sm">System is currently <strong id="currentStatus">OFF</strong></p>
+                                <p class="text-blue-700 text-xs mt-1">Last check: <span id="lastCheck">Never</span></p>
+                            </div>
+                            <label class="toggle-switch">
+                                <input type="checkbox" id="systemToggle" onchange="toggleSystem()">
+                                <span class="slider"></span>
+                            </label>
+                        </div>
+                    </div>
+
+                    <div id="dashboardAlerts"></div>
+
+                    <button onclick="checkEmailsNow()" class="btn-primary">
+                        <i class="fas fa-sync-alt mr-2"></i>Check Emails Now
+                    </button>
+                </div>
+
+                <!-- Rules Tab -->
+                <div id="rulesTab" class="glass-effect rounded-xl p-8 shadow-xl mb-8 hidden">
+                    <div class="flex justify-between items-center mb-6">
+                        <h2 class="text-2xl font-bold text-gray-800">Manage Rules</h2>
+                        <button onclick="openRuleModal()" class="btn-primary">
+                            <i class="fas fa-plus mr-2"></i>Add New Rule
+                        </button>
+                    </div>
+
+                    <div id="rulesList"></div>
+                    <div id="noRulesMessage" class="text-center py-8 text-gray-500">
+                        <i class="fas fa-file-slash text-4xl mb-4 block opacity-50"></i>
+                        <p>No rules created yet. Add your first rule to get started!</p>
+                    </div>
+                </div>
+
+                <!-- History Tab -->
+                <div id="historyTab" class="glass-effect rounded-xl p-8 shadow-xl mb-8 hidden">
+                    <h2 class="text-2xl font-bold mb-6 text-gray-800">Reply History</h2>
+                    <div id="historyList"></div>
+                    <div id="noHistoryMessage" class="text-center py-8 text-gray-500">
+                        <i class="fas fa-inbox text-4xl mb-4 block opacity-50"></i>
+                        <p>No replies sent yet</p>
+                    </div>
+                </div>
+
+                <!-- Settings Tab -->
+                <div id="settingsTab" class="glass-effect rounded-xl p-8 shadow-xl mb-8 hidden">
+                    <h2 class="text-2xl font-bold mb-6 text-gray-800">Settings</h2>
+                    
+                    <div class="space-y-6">
+                        <div>
+                            <label class="block text-sm font-bold text-gray-700 mb-2">Check Interval (minutes):</label>
+                            <input type="number" id="checkInterval" min="1" max="60" value="5" class="w-32">
+                            <p class="text-xs text-gray-600 mt-1">How often to check for new emails (1-60 minutes)</p>
+                        </div>
+
+                        <div>
+                            <label class="block text-sm font-bold text-gray-700 mb-2">Max Replies Per Day:</label>
+                            <input type="number" id="maxRepliesPerDay" min="0" value="0" class="w-32">
+                            <p class="text-xs text-gray-600 mt-1">Set to 0 for unlimited</p>
+                        </div>
+
+                        <div>
+                            <label class="flex items-center space-x-2">
+                                <input type="checkbox" id="includeHistory" checked class="w-4 h-4">
+                                <span class="text-gray-700 font-medium">Keep reply history</span>
+                            </label>
+                        </div>
+
+                        <button onclick="saveSettings()" class="btn-primary">Save Settings</button>
+                    </div>
+
+                    <hr class="my-8">
+
+                    <h3 class="text-xl font-bold mb-4 text-gray-800">Data & Privacy</h3>
+                    <p class="text-gray-600 mb-4 text-sm">All your data is stored locally in your browser. This app does not send any information to external servers.</p>
+                    
+                    <button onclick="exportData()" class="btn-secondary mr-3">
+                        <i class="fas fa-download mr-2"></i>Export Data (Backup)
+                    </button>
+                    <button onclick="clearAllData()" class="bg-red-500 text-white px-4 py-2 rounded font-bold hover:bg-red-600">
+                        <i class="fas fa-trash mr-2"></i>Clear All Data
+                    </button>
+                </div>
+            </div>
+        </div>
     </div>
 
-    <div class="container mx-auto px-4 py-12">
-      <div class="timeline">
-        <div class="timeline-item">
-          <div class="step-card">
-            <div class="flex flex-col lg:flex-row items-center">
-              <div class="lg:w-1/2 lg:pr-8 mb-6 lg:mb-0">
-                <div class="step-number">1</div>
-                <h3 class="text-2xl font-bold mb-4 text-blue-300">
-                  Export the Scenario
-                </h3>
-                <p class="text-gray-300 leading-relaxed">
-                  First, I go into my own make.com account and export the full
-                  scenario that I built. After exporting it, I email you the
-                  scenario file so you can import it into your account. This
-                  gives you the complete automation setup exactly how it runs
-                  for me.
-                </p>
-              </div>
-              <div class="lg:w-1/2">
-                <img
-                  src="images/email1.png"
-                  alt="Step 1 Image"
-                  class="step-image"
-                />
-              </div>
+    <!-- Rule Modal -->
+    <div id="ruleModal" class="modal-overlay hidden" onclick="if(event.target === this) closeRuleModal()">
+        <div class="modal-content">
+            <div class="flex justify-between items-center mb-6">
+                <h2 class="text-2xl font-bold text-gray-800">
+                    <span id="modalTitle">Add New Rule</span>
+                </h2>
+                <button onclick="closeRuleModal()" class="text-gray-500 hover:text-gray-700 text-2xl">&times;</button>
             </div>
-          </div>
-        </div>
 
-        <div class="timeline-item">
-          <div class="step-card">
-            <div class="flex flex-col lg:flex-row-reverse items-center">
-              <div class="lg:w-1/2 lg:pl-8 mb-6 lg:mb-0">
-                <div class="step-number">2</div>
-                <h3 class="text-2xl font-bold mb-4 text-green-300">
-                  Import and Reconnect
-                </h3>
-                <p class="text-gray-300 leading-relaxed">
-                  Once I send you the exported scenario, you open your make.com
-                  account and import the file. Importing will recreate the
-                  entire workflow structure on your side, but you will reconnect
-                  the modules with your own Google, email, and Spreadsheet so
-                  everything runs under your account instead of mine.
-                </p>
-              </div>
-              <div class="lg:w-1/2">
-                <img
-                  src="images/wmail2.png"
-                  alt="Step 2 Image"
-                  class="step-image"
-                />
-              </div>
-            </div>
-          </div>
-        </div>
+            <form id="ruleForm" onsubmit="saveRule(event)">
+                <div class="space-y-4">
+                    <div>
+                        <label class="block text-sm font-bold text-gray-700 mb-2">Rule Name:</label>
+                        <input type="text" id="ruleName" placeholder="e.g., Out of Office Reply" required>
+                    </div>
 
-        <div class="timeline-item">
-          <div class="step-card">
-            <div class="flex flex-col lg:flex-row items-center">
-              <div class="lg:w-1/2 lg:pr-8 mb-6 lg:mb-0">
-                <div class="step-number">3</div>
-                <h3 class="text-2xl font-bold mb-4 text-purple-300">
-                  Set Up Logging Spreadsheet
-                </h3>
-                <p class="text-gray-300 leading-relaxed">
-                  After the scenario is imported, you create a Spreadsheet in
-                  your drive and set up the first row with Timestamp, From
-                  Email, Subject, and body (body is what they sent you). This is
-                  just for logging all responses. You've already sent the email
-                  to them.
-                </p>
-              </div>
-              <div class="lg:w-1/2">
-                <img
-                  src="images/wmaile3.png"
-                  alt="Step 3 Image"
-                  class="step-image"
-                />
-              </div>
-            </div>
-          </div>
+                    <div>
+                        <label class="block text-sm font-bold text-gray-700 mb-2">Match Emails From:</label>
+                        <input type="text" id="ruleFrom" placeholder="e.g., @company.com or leave blank for all">
+                    </div>
+
+                    <div>
+                        <label class="block text-sm font-bold text-gray-700 mb-2">Subject Contains (optional):</label>
+                        <input type="text" id="ruleSubject" placeholder="e.g., Meeting Request">
+                    </div>
+
+                    <div>
+                        <label class="block text-sm font-bold text-gray-700 mb-2">Only from These Labels:</label>
+                        <input type="text" id="ruleLabels" placeholder="e.g., INBOX, IMPORTANT (leave blank for all)">
+                    </div>
+
+                    <div>
+                        <label class="block text-sm font-bold text-gray-700 mb-2">Auto Reply Message:</label>
+                        <textarea id="ruleMessage" placeholder="Enter your auto-reply message" rows="6" required></textarea>
+                        <p class="text-xs text-gray-600 mt-1">You can use these variables: {{from}}, {{subject}}, {{date}}</p>
+                    </div>
+
+                    <div>
+                        <label class="flex items-center space-x-2">
+                            <input type="checkbox" id="ruleEnabled" checked class="w-4 h-4">
+                            <span class="text-gray-700 font-medium">Enable this rule</span>
+                        </label>
+                    </div>
+
+                    <div class="flex space-x-3 pt-4">
+                        <button type="submit" class="btn-primary flex-1">Save Rule</button>
+                        <button type="button" onclick="closeRuleModal()" class="btn-secondary flex-1">Cancel</button>
+                    </div>
+                </div>
+            </form>
         </div>
-      </div>
     </div>
-  </body>
+
+    <!-- OAuth Callback Handler -->
+    <script>
+        // Check if this is a callback from OAuth
+        if (window.location.hash) {
+            const params = new URLSearchParams(window.location.hash.substring(1));
+            const accessToken = params.get('access_token');
+            if (accessToken) {
+                localStorage.setItem('gmail_access_token', accessToken);
+                localStorage.setItem('gmail_token_time', Date.now());
+                window.location.hash = '';
+                location.reload();
+            }
+        }
+    </script>
+
+    <script>
+        // ========== CONFIG & STATE ==========
+        const CONFIG = {
+            GMAIL_SCOPES: 'https://www.googleapis.com/auth/gmail.readonly https://www.googleapis.com/auth/gmail.send https://www.googleapis.com/auth/gmail.labels',
+            STORAGE_PREFIX: 'autoGmailReplier_'
+        };
+
+        // ========== INITIALIZATION ==========
+        function init() {
+            loadSettings();
+            updateAuthUI();
+            if (isLoggedIn()) {
+                showMainApp();
+                loadRules();
+                updateDashboard();
+                startAutoCheck();
+            }
+        }
+
+        // ========== AUTH FUNCTIONS ==========
+        function loginWithGoogle() {
+            const clientId = localStorage.getItem(CONFIG.STORAGE_PREFIX + 'clientId');
+            if (!clientId) {
+                alert('Please enter your Client ID in the setup guide first!');
+                return;
+            }
+
+            const redirectUri = window.location.origin + window.location.pathname;
+            const authUrl = `https://accounts.google.com/o/oauth2/v2/auth?` +
+                `client_id=${clientId}&` +
+                `redirect_uri=${encodeURIComponent(redirectUri)}&` +
+                `response_type=token&` +
+                `scope=${encodeURIComponent(CONFIG.GMAIL_SCOPES)}&` +
+                `access_type=offline`;
+
+            window.location.href = authUrl;
+        }
+
+        function goToLogin() {
+            document.querySelector('.tab-button').click();
+            loginWithGoogle();
+        }
+
+        function logout() {
+            if (confirm('Are you sure you want to logout?')) {
+                localStorage.removeItem('gmail_access_token');
+                localStorage.removeItem('gmail_token_time');
+                localStorage.removeItem(CONFIG.STORAGE_PREFIX + 'userEmail');
+                location.reload();
+            }
+        }
+
+        function isLoggedIn() {
+            return !!localStorage.getItem('gmail_access_token');
+        }
+
+        function getAccessToken() {
+            return localStorage.getItem('gmail_access_token');
+        }
+
+        function updateAuthUI() {
+            const loginSection = document.getElementById('loginSection');
+            const loggedInSection = document.getElementById('loggedInSection');
+            const setupGuide = document.getElementById('setupGuide');
+
+            if (isLoggedIn()) {
+                loginSection.classList.add('hidden');
+                loggedInSection.classList.remove('hidden');
+                setupGuide.classList.add('hidden');
+                const userEmail = localStorage.getItem(CONFIG.STORAGE_PREFIX + 'userEmail');
+                if (userEmail) {
+                    document.getElementById('userEmail').textContent = userEmail;
+                }
+            } else {
+                loginSection.classList.remove('hidden');
+                loggedInSection.classList.add('hidden');
+                setupGuide.classList.remove('hidden');
+            }
+        }
+
+        // ========== CREDENTIALS ==========
+        function saveCredentials() {
+            const clientId = document.getElementById('clientId').value.trim();
+            const apiKey = document.getElementById('apiKey').value.trim();
+
+            if (!clientId) {
+                alert('Please enter your Client ID');
+                return;
+            }
+
+            localStorage.setItem(CONFIG.STORAGE_PREFIX + 'clientId', clientId);
+            localStorage.setItem(CONFIG.STORAGE_PREFIX + 'apiKey', apiKey);
+            alert('Credentials saved! Now click "Login with Gmail"');
+        }
+
+        // ========== RULES ==========
+        function openRuleModal(ruleId = null) {
+            document.getElementById('ruleForm').reset();
+            if (ruleId) {
+                document.getElementById('modalTitle').textContent = 'Edit Rule';
+                const rule = getRule(ruleId);
+                if (rule) {
+                    document.getElementById('ruleName').value = rule.name;
+                    document.getElementById('ruleFrom').value = rule.from || '';
+                    document.getElementById('ruleSubject').value = rule.subject || '';
+                    document.getElementById('ruleLabels').value = rule.labels || '';
+                    document.getElementById('ruleMessage').value = rule.message;
+                    document.getElementById('ruleEnabled').checked = rule.enabled;
+                    document.getElementById('ruleForm').dataset.editId = ruleId;
+                }
+            } else {
+                document.getElementById('modalTitle').textContent = 'Add New Rule';
+                delete document.getElementById('ruleForm').dataset.editId;
+            }
+            document.getElementById('ruleModal').classList.remove('hidden');
+        }
+
+        function closeRuleModal() {
+            document.getElementById('ruleModal').classList.add('hidden');
+        }
+
+        function saveRule(event) {
+            event.preventDefault();
+            const editId = document.getElementById('ruleForm').dataset.editId;
+            const rule = {
+                id: editId || Date.now().toString(),
+                name: document.getElementById('ruleName').value,
+                from: document.getElementById('ruleFrom').value,
+                subject: document.getElementById('ruleSubject').value,
+                labels: document.getElementById('ruleLabels').value,
+                message: document.getElementById('ruleMessage').value,
+                enabled: document.getElementById('ruleEnabled').checked,
+                createdAt: editId ? getRule(editId).createdAt : Date.now(),
+                totalReplies: editId ? getRule(editId).totalReplies : 0
+            };
+
+            const rules = getAllRules();
+            if (editId) {
+                const index = rules.findIndex(r => r.id === editId);
+                if (index >= 0) rules[index] = rule;
+            } else {
+                rules.push(rule);
+            }
+
+            localStorage.setItem(CONFIG.STORAGE_PREFIX + 'rules', JSON.stringify(rules));
+            loadRules();
+            closeRuleModal();
+            alert('Rule saved successfully!');
+        }
+
+        function getAllRules() {
+            const rules = localStorage.getItem(CONFIG.STORAGE_PREFIX + 'rules');
+            return rules ? JSON.parse(rules) : [];
+        }
+
+        function getRule(id) {
+            return getAllRules().find(r => r.id === id);
+        }
+
+        function loadRules() {
+            const rules = getAllRules();
+            const rulesList = document.getElementById('rulesList');
+            const noRulesMessage = document.getElementById('noRulesMessage');
+
+            if (rules.length === 0) {
+                rulesList.innerHTML = '';
+                noRulesMessage.classList.remove('hidden');
+                return;
+            }
+
+            noRulesMessage.classList.add('hidden');
+            rulesList.innerHTML = rules.map(rule => `
+                <div class="rule-item">
+                    <div class="flex justify-between items-start mb-3">
+                        <div>
+                            <h3 class="text-lg font-bold text-gray-800">${escapeHtml(rule.name)}</h3>
+                            <p class="text-sm text-gray-600">Total replies sent: ${rule.totalReplies}</p>
+                        </div>
+                        <span class="status-badge ${rule.enabled ? 'status-active' : 'status-inactive'}">
+                            ${rule.enabled ? 'Active' : 'Inactive'}
+                        </span>
+                    </div>
+
+                    <div class="text-sm text-gray-700 mb-4 space-y-1">
+                        ${rule.from ? `<p><strong>From:</strong> ${escapeHtml(rule.from)}</p>` : ''}
+                        ${rule.subject ? `<p><strong>Subject:</strong> ${escapeHtml(rule.subject)}</p>` : ''}
+                        ${rule.labels ? `<p><strong>Labels:</strong> ${escapeHtml(rule.labels)}</p>` : ''}
+                    </div>
+
+                    <div class="bg-gray-50 p-3 rounded mb-4 text-sm">
+                        <strong>Reply Message:</strong>
+                        <p class="text-gray-700 whitespace-pre-wrap">${escapeHtml(rule.message).substring(0, 100)}...</p>
+                    </div>
+
+                    <div class="flex space-x-2">
+                        <button onclick="openRuleModal('${rule.id}')" class="btn-secondary text-sm px-3 py-1">
+                            <i class="fas fa-edit mr-1"></i>Edit
+                        </button>
+                        <button onclick="deleteRule('${rule.id}')" class="bg-red-500 text-white px-3 py-1 rounded text-sm font-bold hover:bg-red-600">
+                            <i class="fas fa-trash mr-1"></i>Delete
+                        </button>
+                    </div>
+                </div>
+            `).join('');
+        }
+
+        function deleteRule(ruleId) {
+            if (confirm('Are you sure you want to delete this rule?')) {
+                const rules = getAllRules().filter(r => r.id !== ruleId);
+                localStorage.setItem(CONFIG.STORAGE_PREFIX + 'rules', JSON.stringify(rules));
+                loadRules();
+            }
+        }
+
+        // ========== EMAIL & AUTO-REPLY ==========
+        let autoCheckInterval = null;
+
+        function startAutoCheck() {
+            const interval = parseInt(localStorage.getItem(CONFIG.STORAGE_PREFIX + 'checkInterval')) || 5;
+            autoCheckInterval = setInterval(() => {
+                checkEmails();
+            }, interval * 60 * 1000);
+        }
+
+        function stopAutoCheck() {
+            if (autoCheckInterval) {
+                clearInterval(autoCheckInterval);
+                autoCheckInterval = null;
+            }
+        }
+
+        async function checkEmailsNow() {
+            const btn = event.target.closest('button');
+            btn.disabled = true;
+            btn.innerHTML = '<i class="fas fa-spinner fa-spin mr-2"></i>Checking...';
+
+            try {
+                await checkEmails();
+                alert('Email check completed!');
+            } catch (error) {
+                console.error('Error checking emails:', error);
+                alert('Error checking emails: ' + error.message);
+            } finally {
+                btn.disabled = false;
+                btn.innerHTML = '<i class="fas fa-sync-alt mr-2"></i>Check Emails Now';
+            }
+        }
+
+        async function checkEmails() {
+            if (!isLoggedIn()) return;
+
+            const token = getAccessToken();
+            const rules = getAllRules().filter(r => r.enabled);
+
+            if (rules.length === 0) return;
+
+            try {
+                // Get unread messages
+                const response = await fetch(
+                    'https://www.googleapis.com/gmail/v1/users/me/messages?q=is:unread',
+                    { headers: { 'Authorization': `Bearer ${token}` } }
+                );
+
+                if (!response.ok) throw new Error('Failed to fetch messages');
+
+                const data = await response.json();
+                const messages = data.messages || [];
+
+                for (const message of messages.slice(0, 10)) {
+                    await processMessage(message, token, rules);
+                }
+
+                updateLastCheck();
+            } catch (error) {
+                console.error('Error in checkEmails:', error);
+            }
+        }
+
+        async function processMessage(message, token, rules) {
+            try {
+                const response = await fetch(
+                    `https://www.googleapis.com/gmail/v1/users/me/messages/${message.id}`,
+                    { headers: { 'Authorization': `Bearer ${token}` } }
+                );
+
+                if (!response.ok) return;
+
+                const msgData = await response.json();
+                const headers = msgData.payload.headers;
+                const from = headers.find(h => h.name === 'From')?.value || '';
+                const subject = headers.find(h => h.name === 'Subject')?.value || '';
+
+                // Check if message matches any rule
+                for (const rule of rules) {
+                    if (matchRule(from, subject, rule)) {
+                        // Check if already replied
+                        if (!hasReplied(msgData.id)) {
+                            await sendReply(msgData, rule, token);
+                            markAsReplied(msgData.id, rule.id);
+                            addToHistory({ from, subject, rule: rule.name, timestamp: Date.now() });
+                            rule.totalReplies++;
+                        }
+                        break;
+                    }
+                }
+            } catch (error) {
+                console.error('Error processing message:', error);
+            }
+        }
+
+        function matchRule(from, subject, rule) {
+            if (rule.from && !from.toLowerCase().includes(rule.from.toLowerCase())) {
+                return false;
+            }
+            if (rule.subject && !subject.toLowerCase().includes(rule.subject.toLowerCase())) {
+                return false;
+            }
+            return true;
+        }
+
+        async function sendReply(message, rule, token) {
+            try {
+                const headers = message.payload.headers;
+                const from = headers.find(h => h.name === 'From')?.value || '';
+                const subject = headers.find(h => h.name === 'Subject')?.value || '';
+
+                let replyMessage = rule.message
+                    .replace('{{from}}', from)
+                    .replace('{{subject}}', subject)
+                    .replace('{{date}}', new Date().toLocaleString());
+
+                const emailBody = `From: me
+To: ${from}
+Subject: Re: ${subject}
+In-Reply-To: <${message.id}@mail.gmail.com>
+
+${replyMessage}`;
+
+                const encodedMessage = btoa(emailBody)
+                    .replace(/\+/g, '-')
+                    .replace(/\//g, '_')
+                    .replace(/=/g, '');
+
+                const response = await fetch(
+                    'https://www.googleapis.com/gmail/v1/users/me/messages/send',
+                    {
+                        method: 'POST',
+                        headers: {
+                            'Authorization': `Bearer ${token}`,
+                            'Content-Type': 'application/json'
+                        },
+                        body: JSON.stringify({ raw: encodedMessage })
+                    }
+                );
+
+                if (!response.ok) throw new Error('Failed to send reply');
+
+                return await response.json();
+            } catch (error) {
+                console.error('Error sending reply:', error);
+                throw error;
+            }
+        }
+
+        // ========== HISTORY & TRACKING ==========
+        function hasReplied(messageId) {
+            const replied = localStorage.getItem(CONFIG.STORAGE_PREFIX + 'replied') || '[]';
+            return JSON.parse(replied).includes(messageId);
+        }
+
+        function markAsReplied(messageId, ruleId) {
+            const replied = JSON.parse(localStorage.getItem(CONFIG.STORAGE_PREFIX + 'replied') || '[]');
+            replied.push(messageId);
+            localStorage.setItem(CONFIG.STORAGE_PREFIX + 'replied', JSON.stringify(replied));
+
+            // Update rule totalReplies
+            const rules = getAllRules();
+            const rule = rules.find(r => r.id === ruleId);
+            if (rule) {
+                rule.totalReplies++;
+                localStorage.setItem(CONFIG.STORAGE_PREFIX + 'rules', JSON.stringify(rules));
+            }
+        }
+
+        function addToHistory(entry) {
+            if (!localStorage.getItem(CONFIG.STORAGE_PREFIX + 'includeHistory', true)) return;
+
+            const history = JSON.parse(localStorage.getItem(CONFIG.STORAGE_PREFIX + 'history') || '[]');
+            history.unshift(entry);
+            if (history.length > 100) history.pop(); // Keep only 100 entries
+            localStorage.setItem(CONFIG.STORAGE_PREFIX + 'history', JSON.stringify(history));
+        }
+
+        function loadHistory() {
+            const history = JSON.parse(localStorage.getItem(CONFIG.STORAGE_PREFIX + 'history') || '[]');
+            const historyList = document.getElementById('historyList');
+            const noHistoryMessage = document.getElementById('noHistoryMessage');
+
+            if (history.length === 0) {
+                historyList.innerHTML = '';
+                noHistoryMessage.classList.remove('hidden');
+                return;
+            }
+
+            noHistoryMessage.classList.add('hidden');
+            historyList.innerHTML = history.map((entry, idx) => `
+                <div class="rule-item">
+                    <div class="flex justify-between items-start">
+                        <div>
+                            <p class="text-sm text-gray-600"><strong>From:</strong> ${escapeHtml(entry.from)}</p>
+                            <p class="text-sm text-gray-600"><strong>Subject:</strong> ${escapeHtml(entry.subject)}</p>
+                            <p class="text-sm text-gray-600"><strong>Rule:</strong> ${escapeHtml(entry.rule)}</p>
+                            <p class="text-xs text-gray-500 mt-2">${new Date(entry.timestamp).toLocaleString()}</p>
+                        </div>
+                        <span class="status-badge status-success"><i class="fas fa-check mr-1"></i>Replied</span>
+                    </div>
+                </div>
+            `).join('');
+        }
+
+        // ========== DASHBOARD & UI ==========
+        function updateDashboard() {
+            const rules = getAllRules();
+            const history = JSON.parse(localStorage.getItem(CONFIG.STORAGE_PREFIX + 'history') || '[]');
+
+            document.getElementById('totalRules').textContent = rules.filter(r => r.enabled).length;
+            document.getElementById('totalReplies').textContent = history.length;
+
+            const isEnabled = localStorage.getItem(CONFIG.STORAGE_PREFIX + 'systemEnabled') === 'true';
+            document.getElementById('systemToggle').checked = isEnabled;
+            document.getElementById('currentStatus').textContent = isEnabled ? 'ON' : 'OFF';
+            document.getElementById('systemStatus').textContent = isEnabled ? 'Active' : 'Disabled';
+        }
+
+        function updateLastCheck() {
+            const now = new Date();
+            localStorage.setItem(CONFIG.STORAGE_PREFIX + 'lastCheck', now.getTime());
+            document.getElementById('lastCheck').textContent = now.toLocaleString();
+        }
+
+        function toggleSystem() {
+            const enabled = document.getElementById('systemToggle').checked;
+            localStorage.setItem(CONFIG.STORAGE_PREFIX + 'systemEnabled', enabled);
+
+            if (enabled) {
+                startAutoCheck();
+            } else {
+                stopAutoCheck();
+            }
+
+            updateDashboard();
+        }
+
+        // ========== SETTINGS ==========
+        function loadSettings() {
+            document.getElementById('checkInterval').value = 
+                localStorage.getItem(CONFIG.STORAGE_PREFIX + 'checkInterval') || '5';
+            document.getElementById('maxRepliesPerDay').value = 
+                localStorage.getItem(CONFIG.STORAGE_PREFIX + 'maxRepliesPerDay') || '0';
+            document.getElementById('includeHistory').checked = 
+                localStorage.getItem(CONFIG.STORAGE_PREFIX + 'includeHistory') !== 'false';
+        }
+
+        function saveSettings() {
+            localStorage.setItem(CONFIG.STORAGE_PREFIX + 'checkInterval', 
+                document.getElementById('checkInterval').value);
+            localStorage.setItem(CONFIG.STORAGE_PREFIX + 'maxRepliesPerDay', 
+                document.getElementById('maxRepliesPerDay').value);
+            localStorage.setItem(CONFIG.STORAGE_PREFIX + 'includeHistory', 
+                document.getElementById('includeHistory').checked);
+
+            // Restart auto-check with new interval
+            if (localStorage.getItem(CONFIG.STORAGE_PREFIX + 'systemEnabled') === 'true') {
+                stopAutoCheck();
+                startAutoCheck();
+            }
+
+            alert('Settings saved!');
+        }
+
+        function exportData() {
+            const data = {
+                rules: getAllRules(),
+                history: JSON.parse(localStorage.getItem(CONFIG.STORAGE_PREFIX + 'history') || '[]'),
+                settings: {
+                    checkInterval: localStorage.getItem(CONFIG.STORAGE_PREFIX + 'checkInterval'),
+                    maxRepliesPerDay: localStorage.getItem(CONFIG.STORAGE_PREFIX + 'maxRepliesPerDay')
+                },
+                exportDate: new Date().toISOString()
+            };
+
+            const blob = new Blob([JSON.stringify(data, null, 2)], { type: 'application/json' });
+            const url = URL.createObjectURL(blob);
+            const a = document.createElement('a');
+            a.href = url;
+            a.download = `auto-gmail-replier-backup-${Date.now()}.json`;
+            a.click();
+            URL.revokeObjectURL(url);
+        }
+
+        function clearAllData() {
+            if (confirm('Are you sure? This will delete all rules, history, and settings. This action cannot be undone!')) {
+                if (confirm('Are you REALLY sure?')) {
+                    Object.keys(localStorage).forEach(key => {
+                        if (key.startsWith(CONFIG.STORAGE_PREFIX)) {
+                            localStorage.removeItem(key);
+                        }
+                    });
+                    localStorage.removeItem('gmail_access_token');
+                    location.reload();
+                }
+            }
+        }
+
+        // ========== TAB SWITCHING ==========
+        function switchTab(tabName) {
+            // Hide all tabs
+            document.querySelectorAll('[id$="Tab"]').forEach(tab => {
+                tab.classList.add('hidden');
+            });
+
+            // Show selected tab
+            document.getElementById(tabName + 'Tab').classList.remove('hidden');
+
+            // Update active tab button
+            document.querySelectorAll('.tab-button').forEach(btn => {
+                btn.classList.remove('active');
+            });
+            event.target.closest('.tab-button').classList.add('active');
+
+            // Load content for tabs
+            if (tabName === 'rules') loadRules();
+            if (tabName === 'history') {
+                loadHistory();
+            }
+            if (tabName === 'dashboard') updateDashboard();
+        }
+
+        // ========== UI HELPERS ==========
+        function showMainApp() {
+            document.getElementById('setupGuide').classList.add('hidden');
+            document.getElementById('mainApp').classList.remove('hidden');
+        }
+
+        function escapeHtml(text) {
+            const div = document.createElement('div');
+            div.textContent = text;
+            return div.innerHTML;
+        }
+
+        // ========== STARTUP ==========
+        window.addEventListener('DOMContentLoaded', init);
+    </script>
+</body>
 </html>
