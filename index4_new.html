@@ -1,0 +1,506 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Auto Gmail Replier - Automate Your Email Responses</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
+    />
+    <style>
+      @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700;800&display=swap");
+      * {
+        font-family: "Poppins", sans-serif;
+      }
+      body {
+        background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+        min-height: 100vh;
+      }
+      .hero-gradient {
+        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      }
+      .card-shadow {
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+      }
+      .feature-icon {
+        width: 60px;
+        height: 60px;
+        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        border-radius: 12px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 24px;
+        color: white;
+      }
+      .step-number {
+        width: 40px;
+        height: 40px;
+        border-radius: 50%;
+        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        color: white;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-weight: bold;
+        flex-shrink: 0;
+      }
+      .hidden {
+        display: none !important;
+      }
+      .btn-gradient {
+        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        color: white;
+        padding: 14px 32px;
+        border-radius: 50px;
+        font-weight: 600;
+        border: none;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        display: inline-block;
+        text-decoration: none;
+      }
+      .btn-gradient:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 15px 30px rgba(102, 126, 234, 0.4);
+      }
+      .btn-light {
+        background: white;
+        color: #667eea;
+        padding: 14px 32px;
+        border-radius: 50px;
+        font-weight: 600;
+        border: 2px solid #667eea;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        display: inline-block;
+        text-decoration: none;
+      }
+      .btn-light:hover {
+        background: #f0f4ff;
+      }
+      .code-block {
+        background: #1f2937;
+        color: #e5e7eb;
+        padding: 16px;
+        border-radius: 8px;
+        overflow-x: auto;
+        font-size: 13px;
+        font-family: "Courier New", monospace;
+      }
+      .timeline {
+        position: relative;
+        padding: 40px 0;
+      }
+      .timeline::before {
+        content: "";
+        position: absolute;
+        left: 20px;
+        top: 0;
+        bottom: 0;
+        width: 3px;
+        background: linear-gradient(to bottom, #667eea, #764ba2);
+      }
+    </style>
+  </head>
+  <body>
+    <!-- LANDING PAGE -->
+    <div id="landingPage">
+      <!-- HERO SECTION -->
+      <section class="hero-gradient text-white py-20 px-4">
+        <div class="max-w-4xl mx-auto text-center">
+          <h1 class="text-5xl md:text-6xl font-bold mb-4">
+            <i class="fas fa-envelope-open-text mr-3"></i>Auto Gmail Replier
+          </h1>
+          <p class="text-xl md:text-2xl mb-8 text-purple-100">
+            Never miss an email again. Automatically reply to messages with
+            smart rules.
+          </p>
+          <button onclick="goToSetup()" class="btn-light text-lg">
+            Get Started Now <i class="fas fa-arrow-right ml-2"></i>
+          </button>
+        </div>
+      </section>
+
+      <!-- BENEFITS SECTION -->
+      <section class="py-16 px-4">
+        <div class="max-w-4xl mx-auto">
+          <h2 class="text-3xl font-bold text-center mb-12 text-gray-800">
+            Why You'll Love It
+          </h2>
+          <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+            <div class="bg-white p-8 rounded-xl card-shadow text-center">
+              <div class="flex justify-center mb-4">
+                <div class="feature-icon">
+                  <i class="fas fa-magic"></i>
+                </div>
+              </div>
+              <h3 class="text-xl font-bold mb-3">Smart Automation</h3>
+              <p class="text-gray-600">
+                Set up custom rules to automatically reply based on sender,
+                subject, and more.
+              </p>
+            </div>
+            <div class="bg-white p-8 rounded-xl card-shadow text-center">
+              <div class="flex justify-center mb-4">
+                <div class="feature-icon">
+                  <i class="fas fa-lock"></i>
+                </div>
+              </div>
+              <h3 class="text-xl font-bold mb-3">100% Private</h3>
+              <p class="text-gray-600">
+                All data stays on your device. No servers, no tracking,
+                completely secure.
+              </p>
+            </div>
+            <div class="bg-white p-8 rounded-xl card-shadow text-center">
+              <div class="flex justify-center mb-4">
+                <div class="feature-icon">
+                  <i class="fas fa-free"></i>
+                </div>
+              </div>
+              <h3 class="text-xl font-bold mb-3">Completely Free</h3>
+              <p class="text-gray-600">
+                No hidden costs, no premium features, no subscriptions ever.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- PREVIEW DEMO SECTION -->
+      <section class="py-16 px-4 bg-white">
+        <div class="max-w-4xl mx-auto">
+          <h2 class="text-3xl font-bold text-center mb-12 text-gray-800">
+            How It Works
+          </h2>
+          <div
+            class="bg-gradient-to-br from-purple-50 to-blue-50 p-8 rounded-xl card-shadow"
+          >
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
+              <div>
+                <h3 class="text-2xl font-bold mb-4 text-gray-800">
+                  Create Your Rules
+                </h3>
+                <ul class="space-y-4">
+                  <li class="flex items-start">
+                    <i class="fas fa-check text-green-500 mr-3 mt-1"></i>
+                    <span class="text-gray-700"
+                      ><strong>Filter by Sender:</strong> Match specific email
+                      addresses or domains</span
+                    >
+                  </li>
+                  <li class="flex items-start">
+                    <i class="fas fa-check text-green-500 mr-3 mt-1"></i>
+                    <span class="text-gray-700"
+                      ><strong>Filter by Subject:</strong> Only reply to
+                      specific keywords</span
+                    >
+                  </li>
+                  <li class="flex items-start">
+                    <i class="fas fa-check text-green-500 mr-3 mt-1"></i>
+                    <span class="text-gray-700"
+                      ><strong>Custom Messages:</strong> Write your own response
+                      templates</span
+                    >
+                  </li>
+                  <li class="flex items-start">
+                    <i class="fas fa-check text-green-500 mr-3 mt-1"></i>
+                    <span class="text-gray-700"
+                      ><strong>Enable/Disable:</strong> Turn rules on/off
+                      anytime</span
+                    >
+                  </li>
+                </ul>
+              </div>
+              <div>
+                <h3 class="text-2xl font-bold mb-4 text-gray-800">
+                  Track Everything
+                </h3>
+                <ul class="space-y-4">
+                  <li class="flex items-start">
+                    <i class="fas fa-chart-line text-blue-500 mr-3 mt-1"></i>
+                    <span class="text-gray-700"
+                      ><strong>Dashboard:</strong> See how many replies were
+                      sent</span
+                    >
+                  </li>
+                  <li class="flex items-start">
+                    <i class="fas fa-history text-blue-500 mr-3 mt-1"></i>
+                    <span class="text-gray-700"
+                      ><strong>Full History:</strong> View all automated
+                      replies</span
+                    >
+                  </li>
+                  <li class="flex items-start">
+                    <i class="fas fa-gear text-blue-500 mr-3 mt-1"></i>
+                    <span class="text-gray-700"
+                      ><strong>Customize Settings:</strong> Adjust check
+                      frequency</span
+                    >
+                  </li>
+                  <li class="flex items-start">
+                    <i class="fas fa-ban text-blue-500 mr-3 mt-1"></i>
+                    <span class="text-gray-700"
+                      ><strong>Stop Anytime:</strong> Pause or delete rules
+                      instantly</span
+                    >
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- DETAILED SETUP SECTION -->
+      <section class="py-16 px-4">
+        <div class="max-w-4xl mx-auto">
+          <h2 class="text-3xl font-bold text-center mb-12 text-gray-800">
+            Complete Setup Guide
+          </h2>
+
+          <!-- STEP 1 -->
+          <div class="bg-white p-8 rounded-xl card-shadow mb-6">
+            <div class="flex items-start gap-6">
+              <div class="step-number">1</div>
+              <div class="flex-1">
+                <h3 class="text-2xl font-bold mb-4 text-gray-800">
+                  Create a Google Cloud Project
+                </h3>
+                <p class="text-gray-700 mb-4">
+                  First, you need to set up a project on Google Cloud to get
+                  your credentials.
+                </p>
+                <div class="bg-gray-50 p-4 rounded-lg mb-4">
+                  <p class="font-bold text-gray-800 mb-2">
+                    Follow these steps:
+                  </p>
+                  <ol class="list-decimal list-inside space-y-2 text-gray-700">
+                    <li>
+                      Go to
+                      <a
+                        href="https://console.cloud.google.com"
+                        target="_blank"
+                        class="text-blue-600 font-bold underline"
+                        >Google Cloud Console</a
+                      >
+                    </li>
+                    <li>
+                      Click "Create Project" and name it "Auto Gmail Replier"
+                    </li>
+                    <li>Wait for the project to be created (1-2 minutes)</li>
+                    <li>In the search bar, search for "Gmail API"</li>
+                    <li>Click "Gmail API" and press the "Enable" button</li>
+                  </ol>
+                </div>
+                <p class="text-sm text-gray-500">
+                  <i class="fas fa-info-circle mr-2"></i>The Gmail API is free.
+                  This just lets the app access your emails.
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <!-- STEP 2 -->
+          <div class="bg-white p-8 rounded-xl card-shadow mb-6">
+            <div class="flex items-start gap-6">
+              <div class="step-number">2</div>
+              <div class="flex-1">
+                <h3 class="text-2xl font-bold mb-4 text-gray-800">
+                  Get Your Client ID
+                </h3>
+                <p class="text-gray-700 mb-4">
+                  Now you need to create OAuth credentials to connect your Gmail
+                  account.
+                </p>
+                <div class="bg-gray-50 p-4 rounded-lg mb-4">
+                  <p class="font-bold text-gray-800 mb-2">
+                    Follow these steps:
+                  </p>
+                  <ol class="list-decimal list-inside space-y-2 text-gray-700">
+                    <li>Go back to Google Cloud Console</li>
+                    <li>Click on "Credentials" in the left menu</li>
+                    <li>Click "Create Credentials" → "OAuth Client ID"</li>
+                    <li>Select "Web application"</li>
+                    <li>
+                      Under "Authorized redirect URIs", add:
+                      <code class="bg-white px-2 py-1 rounded"
+                        >https://nipecio.github.io/invoicegen/index4.html</code
+                      >
+                    </li>
+                    <li>
+                      Click "Create" and copy your "Client ID" (looks like:
+                      123456-abc.apps.googleusercontent.com)
+                    </li>
+                  </ol>
+                </div>
+                <p class="text-sm text-gray-500">
+                  <i class="fas fa-info-circle mr-2"></i>You'll need this Client
+                  ID in the next step.
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <!-- STEP 3 -->
+          <div class="bg-white p-8 rounded-xl card-shadow mb-6">
+            <div class="flex items-start gap-6">
+              <div class="step-number">3</div>
+              <div class="flex-1">
+                <h3 class="text-2xl font-bold mb-4 text-gray-800">
+                  Add as Test User (First Time Only)
+                </h3>
+                <p class="text-gray-700 mb-4">
+                  Since the app is in development, you need to add your Gmail as
+                  a test user.
+                </p>
+                <div class="bg-gray-50 p-4 rounded-lg mb-4">
+                  <p class="font-bold text-gray-800 mb-2">
+                    Follow these steps:
+                  </p>
+                  <ol class="list-decimal list-inside space-y-2 text-gray-700">
+                    <li>
+                      In Google Cloud Console, click "OAuth consent screen"
+                    </li>
+                    <li>Scroll down to "Test users"</li>
+                    <li>Click "Add Users" and enter your Gmail address</li>
+                    <li>Click "Save"</li>
+                  </ol>
+                </div>
+                <p class="text-sm text-gray-500">
+                  <i class="fas fa-star mr-2 text-yellow-500"></i>This only
+                  takes 30 seconds and only needs to be done once!
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <!-- STEP 4 -->
+          <div class="bg-white p-8 rounded-xl card-shadow mb-6">
+            <div class="flex items-start gap-6">
+              <div class="step-number">4</div>
+              <div class="flex-1">
+                <h3 class="text-2xl font-bold mb-4 text-gray-800">
+                  Paste Your Client ID Here
+                </h3>
+                <p class="text-gray-700 mb-4">
+                  Now paste the Client ID you copied above:
+                </p>
+                <input
+                  type="text"
+                  id="clientIdInput"
+                  placeholder="Paste your Client ID here"
+                  class="w-full px-4 py-3 border-2 border-gray-300 rounded-lg mb-3 focus:outline-none focus:border-purple-600"
+                />
+                <button onclick="saveClientIdAndLogin()" class="btn-gradient">
+                  Login with Gmail
+                </button>
+                <p class="text-sm text-gray-500 mt-3">
+                  <i class="fas fa-lock mr-2"></i>Your credentials are stored
+                  locally and never sent anywhere.
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <!-- EXAMPLE RULES -->
+          <div class="bg-blue-50 border-2 border-blue-200 p-8 rounded-xl">
+            <h3 class="text-2xl font-bold mb-4 text-gray-800">
+              <i class="fas fa-lightbulb mr-2 text-yellow-500"></i>Example Rules
+              You Can Create
+            </h3>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+              <div class="bg-white p-4 rounded-lg">
+                <p class="font-bold text-gray-800 mb-2">Out of Office</p>
+                <p class="text-sm text-gray-700">
+                  Reply to all emails with: "I'm out of the office and will
+                  return on Monday"
+                </p>
+              </div>
+              <div class="bg-white p-4 rounded-lg">
+                <p class="font-bold text-gray-800 mb-2">Customer Support</p>
+                <p class="text-sm text-gray-700">
+                  Auto-reply to emails with "support" in subject: "Thanks for
+                  reaching out..."
+                </p>
+              </div>
+              <div class="bg-white p-4 rounded-lg">
+                <p class="font-bold text-gray-800 mb-2">Company Updates</p>
+                <p class="text-sm text-gray-700">
+                  Reply to emails from @company.com with meeting announcements
+                </p>
+              </div>
+              <div class="bg-white p-4 rounded-lg">
+                <p class="font-bold text-gray-800 mb-2">Auto Ticket Response</p>
+                <p class="text-sm text-gray-700">
+                  Send ticket confirmation to client emails automatically
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- CTA SECTION -->
+      <section class="hero-gradient text-white py-16 px-4 text-center">
+        <div class="max-w-2xl mx-auto">
+          <h2 class="text-3xl font-bold mb-4">Ready to Get Started?</h2>
+          <p class="text-lg mb-8 text-purple-100">
+            Follow the setup guide above, then log in to start creating your
+            rules!
+          </p>
+          <button onclick="goToApp()" class="btn-light text-lg">
+            Go to App <i class="fas fa-arrow-right ml-2"></i>
+          </button>
+        </div>
+      </section>
+    </div>
+
+    <!-- APP PAGE (Hidden by default) -->
+    <div id="appPage" class="hidden">
+      <!-- App content loads here -->
+      <div id="appContent"></div>
+    </div>
+
+    <script>
+      function saveClientIdAndLogin() {
+        const clientId = document.getElementById("clientIdInput").value.trim();
+        if (!clientId) {
+          alert("Please paste your Client ID first!");
+          return;
+        }
+        localStorage.setItem("autoGmailReplier_clientId", clientId);
+        alert('Client ID saved! Now click "Login with Gmail"');
+        goToApp();
+      }
+
+      function goToSetup() {
+        document
+          .getElementById("landingPage")
+          .scrollIntoView({ behavior: "smooth" });
+        setTimeout(() => document.getElementById("clientIdInput").focus(), 500);
+      }
+
+      function goToApp() {
+        document.getElementById("landingPage").classList.add("hidden");
+        document.getElementById("appPage").classList.remove("hidden");
+        loadAppContent();
+      }
+
+      function goToLanding() {
+        document.getElementById("appPage").classList.add("hidden");
+        document.getElementById("landingPage").classList.remove("hidden");
+      }
+
+      function loadAppContent() {
+        // Load iframe or actual app here
+        const appContent = document.getElementById("appContent");
+        appContent.innerHTML =
+          '<div style="text-align:center; padding: 40px;"><h2>App Dashboard</h2><p>Coming soon...</p></div>';
+      }
+    </script>
+  </body>
+</html>
