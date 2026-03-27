@@ -16,20 +16,26 @@
       * {
         font-family: "Poppins", sans-serif;
       }
+
       body {
         background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
         min-height: 100vh;
       }
+
+      /* LANDING PAGE STYLES */
       #landingPage {
         background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
         min-height: 100vh;
       }
+
       .hero-gradient {
         background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
       }
+
       .card-shadow {
         box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
       }
+
       .feature-icon {
         width: 60px;
         height: 60px;
@@ -41,6 +47,7 @@
         font-size: 24px;
         color: white;
       }
+
       .step-number {
         width: 40px;
         height: 40px;
@@ -53,6 +60,7 @@
         font-weight: bold;
         flex-shrink: 0;
       }
+
       .btn-gradient {
         background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
         color: white;
@@ -65,10 +73,12 @@
         display: inline-block;
         text-decoration: none;
       }
+
       .btn-gradient:hover {
         transform: translateY(-2px);
         box-shadow: 0 15px 30px rgba(102, 126, 234, 0.4);
       }
+
       .btn-light {
         background: white;
         color: #667eea;
@@ -81,25 +91,31 @@
         display: inline-block;
         text-decoration: none;
       }
+
       .btn-light:hover {
         background: #f0f4ff;
       }
+
+      /* APP PAGE STYLES */
       #appPage {
         background: #000000;
         min-height: 100vh;
         color: #ffffff;
       }
+
       .glass-effect {
         background: rgba(255, 255, 255, 0.95);
         backdrop-filter: blur(10px);
         border: 1px solid rgba(255, 255, 255, 0.2);
       }
+
       .gradient-text {
         background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
         -webkit-background-clip: text;
         -webkit-text-fill-color: transparent;
         background-clip: text;
       }
+
       .btn-primary {
         background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
         color: white;
@@ -110,10 +126,12 @@
         border: none;
         cursor: pointer;
       }
+
       .btn-primary:hover {
         transform: translateY(-2px);
         box-shadow: 0 10px 20px rgba(102, 126, 234, 0.4);
       }
+
       .btn-secondary {
         background: white;
         color: #667eea;
@@ -124,9 +142,11 @@
         border: 2px solid #667eea;
         cursor: pointer;
       }
+
       .btn-secondary:hover {
         background: #f0f4ff;
       }
+
       .rule-item {
         background: white;
         border-left: 4px solid #667eea;
@@ -135,17 +155,20 @@
         margin-bottom: 1rem;
         box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
       }
+
       .toggle-switch {
         position: relative;
         display: inline-block;
         width: 50px;
         height: 24px;
       }
+
       .toggle-switch input {
         opacity: 0;
         width: 0;
         height: 0;
       }
+
       .slider {
         position: absolute;
         cursor: pointer;
@@ -157,6 +180,7 @@
         transition: 0.3s;
         border-radius: 24px;
       }
+
       .slider:before {
         position: absolute;
         content: "";
@@ -168,12 +192,15 @@
         transition: 0.3s;
         border-radius: 50%;
       }
+
       input:checked + .slider {
         background-color: #667eea;
       }
+
       input:checked + .slider:before {
         transform: translateX(26px);
       }
+
       .status-badge {
         display: inline-block;
         padding: 0.25rem 0.75rem;
@@ -181,21 +208,26 @@
         font-size: 0.875rem;
         font-weight: 600;
       }
+
       .status-active {
         background: #d4edda;
         color: #155724;
       }
+
       .status-inactive {
         background: #f8d7da;
         color: #721c24;
       }
+
       .status-checking {
         background: #cfe2ff;
         color: #084298;
       }
+
       .hidden {
         display: none !important;
       }
+
       .modal-overlay {
         position: fixed;
         top: 0;
@@ -208,6 +240,7 @@
         justify-content: center;
         z-index: 1000;
       }
+
       .modal-content {
         background: white;
         border-radius: 12px;
@@ -218,6 +251,7 @@
         overflow-y: auto;
         box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
       }
+
       input[type="text"],
       input[type="email"],
       textarea,
@@ -230,6 +264,7 @@
         font-size: 1rem;
         transition: border-color 0.3s ease;
       }
+
       input[type="text"]:focus,
       input[type="email"]:focus,
       textarea:focus,
@@ -238,6 +273,7 @@
         border-color: #667eea;
         box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
       }
+
       .tab-button {
         padding: 0.75rem 1.5rem;
         background: transparent;
@@ -248,25 +284,30 @@
         transition: all 0.3s ease;
         color: #666;
       }
+
       .tab-button.active {
         color: #667eea;
         border-bottom-color: #667eea;
       }
+
       .alert {
         padding: 1rem;
         border-radius: 8px;
         margin-bottom: 1rem;
       }
+
       .alert-info {
         background: #cfe2ff;
         color: #084298;
         border: 1px solid #b6d4fe;
       }
+
       .alert-success {
         background: #d4edda;
         color: #155724;
         border: 1px solid #c3e6cb;
       }
+
       .alert-error {
         background: #f8d7da;
         color: #721c24;
@@ -275,315 +316,611 @@
     </style>
   </head>
   <body>
-    <div class="min-h-screen py-8 px-4">
-      <div class="max-w-6xl mx-auto">
-        <!-- Header -->
-        <div class="glass-effect rounded-xl p-8 mb-8 shadow-xl">
-          <div class="flex items-center justify-between mb-4">
-            <div>
-              <h1 class="text-4xl font-bold gradient-text mb-2">
-                <i class="fas fa-envelope-circle-check mr-3"></i>Auto Gmail
-                Replier
-              </h1>
+    <!-- LANDING PAGE -->
+    <div id="landingPage">
+      <!-- HERO SECTION -->
+      <section class="hero-gradient text-white py-20 px-4">
+        <div class="max-w-4xl mx-auto text-center">
+          <h1 class="text-5xl md:text-6xl font-bold mb-4">
+            <i class="fas fa-envelope-open-text mr-3"></i>Auto Gmail Replier
+          </h1>
+          <p class="text-xl md:text-2xl mb-8 text-purple-100">
+            Never miss an email again. Automatically reply to messages with
+            smart rules.
+          </p>
+          <button onclick="goToSetup()" class="btn-light text-lg">
+            Get Started Now <i class="fas fa-arrow-right ml-2"></i>
+          </button>
+        </div>
+      </section>
+
+      <!-- BENEFITS SECTION -->
+      <section class="py-16 px-4">
+        <div class="max-w-4xl mx-auto">
+          <h2 class="text-3xl font-bold text-center mb-12 text-gray-800">
+            Why You'll Love It
+          </h2>
+          <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+            <div class="bg-white p-8 rounded-xl card-shadow text-center">
+              <div class="flex justify-center mb-4">
+                <div class="feature-icon">
+                  <i class="fas fa-magic"></i>
+                </div>
+              </div>
+              <h3 class="text-xl font-bold mb-3">Smart Automation</h3>
               <p class="text-gray-600">
-                Automatically reply to emails based on your custom rules
+                Set up custom rules to automatically reply based on sender,
+                subject, and more.
               </p>
             </div>
-            <div id="authStatus" class="text-right">
-              <div id="loginSection">
-                <button onclick="loginWithGoogle()" class="btn-primary">
-                  <i class="fab fa-google mr-2"></i>Login with Gmail
-                </button>
+            <div class="bg-white p-8 rounded-xl card-shadow text-center">
+              <div class="flex justify-center mb-4">
+                <div class="feature-icon">
+                  <i class="fas fa-lock"></i>
+                </div>
               </div>
-              <div id="loggedInSection" class="hidden">
-                <p class="text-sm text-gray-600 mb-2">
-                  Logged in as: <span id="userEmail" class="font-bold"></span>
-                </p>
-                <button onclick="logout()" class="btn-secondary">Logout</button>
+              <h3 class="text-xl font-bold mb-3">100% Private</h3>
+              <p class="text-gray-600">
+                All data stays on your device. No servers, no tracking,
+                completely secure.
+              </p>
+            </div>
+            <div class="bg-white p-8 rounded-xl card-shadow text-center">
+              <div class="flex justify-center mb-4">
+                <div class="feature-icon">
+                  <i class="fas fa-star"></i>
+                </div>
+              </div>
+              <h3 class="text-xl font-bold mb-3">Completely Free</h3>
+              <p class="text-gray-600">
+                No hidden costs, no premium features, no subscriptions ever.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- PREVIEW DEMO SECTION -->
+      <section class="py-16 px-4 bg-white">
+        <div class="max-w-4xl mx-auto">
+          <h2 class="text-3xl font-bold text-center mb-12 text-gray-800">
+            How It Works
+          </h2>
+          <div
+            class="bg-gradient-to-br from-purple-50 to-blue-50 p-8 rounded-xl card-shadow"
+          >
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
+              <div>
+                <h3 class="text-2xl font-bold mb-4 text-gray-800">
+                  Create Your Rules
+                </h3>
+                <ul class="space-y-4">
+                  <li class="flex items-start">
+                    <i class="fas fa-check text-green-500 mr-3 mt-1"></i>
+                    <span class="text-gray-700"
+                      ><strong>Filter by Sender:</strong> Match specific email
+                      addresses or domains</span
+                    >
+                  </li>
+                  <li class="flex items-start">
+                    <i class="fas fa-check text-green-500 mr-3 mt-1"></i>
+                    <span class="text-gray-700"
+                      ><strong>Filter by Subject:</strong> Only reply to
+                      specific keywords</span
+                    >
+                  </li>
+                  <li class="flex items-start">
+                    <i class="fas fa-check text-green-500 mr-3 mt-1"></i>
+                    <span class="text-gray-700"
+                      ><strong>Custom Messages:</strong> Write your own response
+                      templates</span
+                    >
+                  </li>
+                  <li class="flex items-start">
+                    <i class="fas fa-check text-green-500 mr-3 mt-1"></i>
+                    <span class="text-gray-700"
+                      ><strong>Enable/Disable:</strong> Turn rules on/off
+                      anytime</span
+                    >
+                  </li>
+                </ul>
+              </div>
+              <div>
+                <h3 class="text-2xl font-bold mb-4 text-gray-800">
+                  Track Everything
+                </h3>
+                <ul class="space-y-4">
+                  <li class="flex items-start">
+                    <i class="fas fa-chart-line text-blue-500 mr-3 mt-1"></i>
+                    <span class="text-gray-700"
+                      ><strong>Dashboard:</strong> See how many replies were
+                      sent</span
+                    >
+                  </li>
+                  <li class="flex items-start">
+                    <i class="fas fa-history text-blue-500 mr-3 mt-1"></i>
+                    <span class="text-gray-700"
+                      ><strong>Full History:</strong> View all automated
+                      replies</span
+                    >
+                  </li>
+                  <li class="flex items-start">
+                    <i class="fas fa-gear text-blue-500 mr-3 mt-1"></i>
+                    <span class="text-gray-700"
+                      ><strong>Customize Settings:</strong> Adjust check
+                      frequency</span
+                    >
+                  </li>
+                  <li class="flex items-start">
+                    <i class="fas fa-ban text-blue-500 mr-3 mt-1"></i>
+                    <span class="text-gray-700"
+                      ><strong>Stop Anytime:</strong> Pause or delete rules
+                      instantly</span
+                    >
+                  </li>
+                </ul>
               </div>
             </div>
           </div>
         </div>
+      </section>
 
-        <!-- Setup Guide (shown first) -->
-        <div id="setupGuide" class="glass-effect rounded-xl p-8 mb-8 shadow-xl">
-          <h2 class="text-2xl font-bold mb-6 text-gray-800">
-            <i class="fas fa-gear mr-2 text-blue-500"></i>Setup Guide
+      <!-- DETAILED SETUP SECTION -->
+      <section class="py-16 px-4">
+        <div class="max-w-4xl mx-auto">
+          <h2 class="text-3xl font-bold text-center mb-12 text-gray-800">
+            Complete Setup Guide
           </h2>
 
-          <div class="space-y-6">
-            <div class="bg-blue-50 border-l-4 border-blue-500 p-4 rounded">
-              <h3 class="font-bold text-blue-900 mb-2">
-                Step 1: Create Google Cloud Project
-              </h3>
-              <ol class="list-decimal list-inside text-blue-800 space-y-2 ml-2">
-                <li>
-                  Go to
-                  <a
-                    href="https://console.cloud.google.com"
-                    target="_blank"
-                    class="underline font-bold"
-                    >Google Cloud Console</a
-                  >
-                </li>
-                <li>Create a new project named "Auto Gmail Replier"</li>
-                <li>Enable the <strong>Gmail API</strong></li>
-                <li>
-                  Go to "Credentials" and create an "OAuth 2.0 Client ID" (Web
-                  application)
-                </li>
-                <li>
-                  Add redirect URI:
-                  <code class="bg-white px-2 py-1 rounded text-sm"
-                    >https://yourwebsite.com/callback</code
-                  >
-                </li>
-              </ol>
-            </div>
-
-            <div class="bg-green-50 border-l-4 border-green-500 p-4 rounded">
-              <h3 class="font-bold text-green-900 mb-2">
-                Step 2: Configure Credentials
-              </h3>
-              <div class="space-y-4">
-                <div>
-                  <label class="block text-sm font-bold text-gray-700 mb-2"
-                    >Client ID:</label
-                  >
-                  <input
-                    type="text"
-                    id="clientId"
-                    placeholder="Paste your Client ID here"
-                    class="bg-white"
-                  />
+          <!-- STEP 1 -->
+          <div class="bg-white p-8 rounded-xl card-shadow mb-6">
+            <div class="flex items-start gap-6">
+              <div class="step-number">1</div>
+              <div class="flex-1">
+                <h3 class="text-2xl font-bold mb-4 text-gray-800">
+                  Create a Google Cloud Project
+                </h3>
+                <p class="text-gray-700 mb-4">
+                  First, you need to set up a project on Google Cloud to get
+                  your credentials.
+                </p>
+                <div class="bg-gray-50 p-4 rounded-lg mb-4">
+                  <p class="font-bold text-gray-800 mb-2">
+                    Follow these steps:
+                  </p>
+                  <ol class="list-decimal list-inside space-y-2 text-gray-700">
+                    <li>
+                      Go to
+                      <a
+                        href="https://console.cloud.google.com"
+                        target="_blank"
+                        class="text-blue-600 font-bold underline"
+                        >Google Cloud Console</a
+                      >
+                    </li>
+                    <li>
+                      Click "Create Project" and name it "Auto Gmail Replier"
+                    </li>
+                    <li>Wait for the project to be created (1-2 minutes)</li>
+                    <li>In the search bar, search for "Gmail API"</li>
+                    <li>Click "Gmail API" and press the "Enable" button</li>
+                  </ol>
                 </div>
-                <div>
-                  <label class="block text-sm font-bold text-gray-700 mb-2"
-                    >API Key (optional):</label
-                  >
-                  <input
-                    type="text"
-                    id="apiKey"
-                    placeholder="Paste your API Key here"
-                    class="bg-white"
-                  />
-                </div>
-                <button onclick="saveCredentials()" class="btn-primary">
-                  Save Credentials
-                </button>
-                <p class="text-xs text-gray-600 mt-2">
-                  Your credentials are stored locally in your browser and never
-                  sent to external servers.
+                <p class="text-sm text-gray-500">
+                  <i class="fas fa-info-circle mr-2"></i>The Gmail API is free.
+                  This just lets the app access your emails.
                 </p>
               </div>
             </div>
+          </div>
 
-            <div class="bg-purple-50 border-l-4 border-purple-500 p-4 rounded">
-              <h3 class="font-bold text-purple-900 mb-2">
-                Step 3: Authenticate Gmail
-              </h3>
-              <p class="text-purple-800 mb-3">
-                Once you save your credentials, click "Login with Gmail" to
-                authorize the app to access your emails.
-              </p>
-              <button onclick="goToLogin()" class="btn-primary">
-                Go to Login
-              </button>
+          <!-- STEP 2 -->
+          <div class="bg-white p-8 rounded-xl card-shadow mb-6">
+            <div class="flex items-start gap-6">
+              <div class="step-number">2</div>
+              <div class="flex-1">
+                <h3 class="text-2xl font-bold mb-4 text-gray-800">
+                  Get Your Client ID
+                </h3>
+                <p class="text-gray-700 mb-4">
+                  Now you need to create OAuth credentials to connect your Gmail
+                  account.
+                </p>
+                <div class="bg-gray-50 p-4 rounded-lg mb-4">
+                  <p class="font-bold text-gray-800 mb-2">
+                    Follow these steps:
+                  </p>
+                  <ol class="list-decimal list-inside space-y-2 text-gray-700">
+                    <li>Go back to Google Cloud Console</li>
+                    <li>Click on "Credentials" in the left menu</li>
+                    <li>Click "Create Credentials" → "OAuth Client ID"</li>
+                    <li>Select "Web application"</li>
+                    <li>
+                      Under "Authorized redirect URIs", add:
+                      <code class="bg-white px-2 py-1 rounded"
+                        >https://nipecio.github.io/Invoice/index4_merged.html</code
+                      >
+                    </li>
+                    <li>
+                      Click "Create" and copy your "Client ID" (looks like:
+                      123456-abc.apps.googleusercontent.com)
+                    </li>
+                  </ol>
+                </div>
+                <p class="text-sm text-gray-500">
+                  <i class="fas fa-info-circle mr-2"></i>You'll need this Client
+                  ID in the next step.
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <!-- STEP 3 -->
+          <div class="bg-white p-8 rounded-xl card-shadow mb-6">
+            <div class="flex items-start gap-6">
+              <div class="step-number">3</div>
+              <div class="flex-1">
+                <h3 class="text-2xl font-bold mb-4 text-gray-800">
+                  Add as Test User (First Time Only)
+                </h3>
+                <p class="text-gray-700 mb-4">
+                  Since the app is in development, you need to add your Gmail as
+                  a test user.
+                </p>
+                <div class="bg-gray-50 p-4 rounded-lg mb-4">
+                  <p class="font-bold text-gray-800 mb-2">
+                    Follow these steps:
+                  </p>
+                  <ol class="list-decimal list-inside space-y-2 text-gray-700">
+                    <li>
+                      In Google Cloud Console, click "OAuth consent screen"
+                    </li>
+                    <li>Scroll down to "Test users"</li>
+                    <li>Click "Add Users" and enter your Gmail address</li>
+                    <li>Click "Save"</li>
+                  </ol>
+                </div>
+                <p class="text-sm text-gray-500">
+                  <i class="fas fa-star mr-2 text-yellow-500"></i>This only
+                  takes 30 seconds and only needs to be done once!
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <!-- STEP 4 -->
+          <div class="bg-white p-8 rounded-xl card-shadow mb-6">
+            <div class="flex items-start gap-6">
+              <div class="step-number">4</div>
+              <div class="flex-1">
+                <h3 class="text-2xl font-bold mb-4 text-gray-800">
+                  Paste Your Client ID Here
+                </h3>
+                <p class="text-gray-700 mb-4">
+                  Now paste the Client ID you copied above:
+                </p>
+                <input
+                  type="text"
+                  id="clientIdInput"
+                  placeholder="Paste your Client ID here"
+                  class="w-full px-4 py-3 border-2 border-gray-300 rounded-lg mb-3 focus:outline-none focus:border-purple-600"
+                />
+                <button onclick="saveClientIdAndLogin()" class="btn-gradient">
+                  Login with Gmail
+                </button>
+                <p class="text-sm text-gray-500 mt-3">
+                  <i class="fas fa-lock mr-2"></i>Your credentials are stored
+                  locally and never sent anywhere.
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <!-- EXAMPLE RULES -->
+          <div class="bg-blue-50 border-2 border-blue-200 p-8 rounded-xl">
+            <h3 class="text-2xl font-bold mb-4 text-gray-800">
+              <i class="fas fa-lightbulb mr-2 text-yellow-500"></i>Example Rules
+              You Can Create
+            </h3>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+              <div class="bg-white p-4 rounded-lg">
+                <p class="font-bold text-gray-800 mb-2">Out of Office</p>
+                <p class="text-sm text-gray-700">
+                  Reply to all emails with: "I'm out of the office and will
+                  return on Monday"
+                </p>
+              </div>
+              <div class="bg-white p-4 rounded-lg">
+                <p class="font-bold text-gray-800 mb-2">Customer Support</p>
+                <p class="text-sm text-gray-700">
+                  Auto-reply to emails with "support" in subject: "Thanks for
+                  reaching out..."
+                </p>
+              </div>
+              <div class="bg-white p-4 rounded-lg">
+                <p class="font-bold text-gray-800 mb-2">Company Updates</p>
+                <p class="text-sm text-gray-700">
+                  Reply to emails from @company.com with meeting announcements
+                </p>
+              </div>
+              <div class="bg-white p-4 rounded-lg">
+                <p class="font-bold text-gray-800 mb-2">Auto Ticket Response</p>
+                <p class="text-sm text-gray-700">
+                  Send ticket confirmation to client emails automatically
+                </p>
+              </div>
             </div>
           </div>
         </div>
+      </section>
 
-        <!-- Main App (hidden until logged in) -->
-        <div id="mainApp" class="hidden">
-          <!-- Tabs -->
-          <div class="glass-effect rounded-t-xl shadow-xl flex border-b">
-            <button class="tab-button active" onclick="switchTab('dashboard')">
-              <i class="fas fa-chart-line mr-2"></i>Dashboard
-            </button>
-            <button class="tab-button" onclick="switchTab('rules')">
-              <i class="fas fa-rules mr-2"></i>Manage Rules
-            </button>
-            <button class="tab-button" onclick="switchTab('history')">
-              <i class="fas fa-history mr-2"></i>Reply History
-            </button>
-            <button class="tab-button" onclick="switchTab('settings')">
-              <i class="fas fa-cog mr-2"></i>Settings
-            </button>
-          </div>
+      <!-- CTA SECTION -->
+      <section class="hero-gradient text-white py-16 px-4 text-center">
+        <div class="max-w-2xl mx-auto">
+          <h2 class="text-3xl font-bold mb-4">Ready to Get Started?</h2>
+          <p class="text-lg mb-8 text-purple-100">
+            Follow the setup guide above, then log in to start creating your
+            rules!
+          </p>
+          <button onclick="goToApp()" class="btn-light text-lg">
+            Go to App <i class="fas fa-arrow-right ml-2"></i>
+          </button>
+        </div>
+      </section>
+    </div>
 
-          <!-- Dashboard Tab -->
-          <div
-            id="dashboardTab"
-            class="glass-effect rounded-b-xl p-8 shadow-xl mb-8"
-          >
-            <h2 class="text-2xl font-bold mb-6 text-gray-800">Dashboard</h2>
-
-            <div class="grid grid-cols-3 gap-4 mb-8">
-              <div
-                class="bg-gradient-to-br from-blue-50 to-blue-100 p-6 rounded-lg"
-              >
-                <div class="text-3xl font-bold text-blue-600" id="totalRules">
-                  0
-                </div>
-                <div class="text-gray-600 text-sm font-medium">
-                  Active Rules
-                </div>
-              </div>
-              <div
-                class="bg-gradient-to-br from-green-50 to-green-100 p-6 rounded-lg"
-              >
-                <div
-                  class="text-3xl font-bold text-green-600"
-                  id="totalReplies"
-                >
-                  0
-                </div>
-                <div class="text-gray-600 text-sm font-medium">
-                  Total Replies Sent
-                </div>
-              </div>
-              <div
-                class="bg-gradient-to-br from-purple-50 to-purple-100 p-6 rounded-lg"
-              >
-                <div
-                  class="text-3xl font-bold text-purple-600"
-                  id="systemStatus"
-                >
-                  Idle
-                </div>
-                <div class="text-gray-600 text-sm font-medium">
-                  System Status
-                </div>
-              </div>
-            </div>
-
-            <div class="bg-blue-50 border-l-4 border-blue-500 p-4 rounded mb-6">
-              <h3 class="font-bold text-blue-900 mb-2">Auto-Reply Status</h3>
-              <div class="flex items-center justify-between">
-                <div>
-                  <p class="text-blue-800 text-sm">
-                    System is currently <strong id="currentStatus">OFF</strong>
-                  </p>
-                  <p class="text-blue-700 text-xs mt-1">
-                    Last check: <span id="lastCheck">Never</span>
-                  </p>
-                </div>
-                <label class="toggle-switch">
-                  <input
-                    type="checkbox"
-                    id="systemToggle"
-                    onchange="toggleSystem()"
-                  />
-                  <span class="slider"></span>
-                </label>
-              </div>
-            </div>
-
-            <div id="dashboardAlerts"></div>
-
-            <button onclick="checkEmailsNow()" class="btn-primary">
-              <i class="fas fa-sync-alt mr-2"></i>Check Emails Now
-            </button>
-          </div>
-
-          <!-- Rules Tab -->
-          <div id="rulesTab" class="glass-effect p-8 shadow-xl mb-8 hidden">
-            <div class="flex justify-between items-center mb-6">
-              <h2 class="text-2xl font-bold text-gray-800">Manage Rules</h2>
-              <button onclick="openRuleModal()" class="btn-primary">
-                <i class="fas fa-plus mr-2"></i>Add New Rule
-              </button>
-            </div>
-
-            <div id="rulesList"></div>
-            <div id="noRulesMessage" class="text-center py-8 text-gray-500">
-              <i class="fas fa-file-slash text-4xl mb-4 block opacity-50"></i>
-              <p>No rules created yet. Add your first rule to get started!</p>
-            </div>
-          </div>
-
-          <!-- History Tab -->
-          <div id="historyTab" class="glass-effect p-8 shadow-xl mb-8 hidden">
-            <h2 class="text-2xl font-bold mb-6 text-gray-800">Reply History</h2>
-            <div id="historyList"></div>
-            <div id="noHistoryMessage" class="text-center py-8 text-gray-500">
-              <i class="fas fa-inbox text-4xl mb-4 block opacity-50"></i>
-              <p>No replies sent yet</p>
-            </div>
-          </div>
-
-          <!-- Settings Tab -->
-          <div id="settingsTab" class="glass-effect p-8 shadow-xl mb-8 hidden">
-            <h2 class="text-2xl font-bold mb-6 text-gray-800">Settings</h2>
-
-            <div class="space-y-6">
+    <!-- APP PAGE (Hidden by default) -->
+    <div id="appPage" class="hidden">
+      <div class="min-h-screen py-8 px-4">
+        <div class="max-w-6xl mx-auto">
+          <!-- Header -->
+          <div class="glass-effect rounded-xl p-8 mb-8 shadow-xl">
+            <div class="flex items-center justify-between mb-4 flex-wrap gap-4">
               <div>
-                <label class="block text-sm font-bold text-gray-700 mb-2"
-                  >Check Interval (minutes):</label
-                >
-                <input
-                  type="number"
-                  id="checkInterval"
-                  min="1"
-                  max="60"
-                  value="5"
-                  class="w-32"
-                />
-                <p class="text-xs text-gray-600 mt-1">
-                  How often to check for new emails (1-60 minutes)
+                <h1 class="text-4xl font-bold gradient-text mb-2">
+                  <i class="fas fa-envelope-circle-check mr-3"></i>Auto Gmail
+                  Replier
+                </h1>
+                <p class="text-gray-600">
+                  Automatically reply to emails based on your custom rules
                 </p>
               </div>
-
-              <div>
-                <label class="block text-sm font-bold text-gray-700 mb-2"
-                  >Max Replies Per Day:</label
-                >
-                <input
-                  type="number"
-                  id="maxRepliesPerDay"
-                  min="0"
-                  value="0"
-                  class="w-32"
-                />
-                <p class="text-xs text-gray-600 mt-1">Set to 0 for unlimited</p>
-              </div>
-
-              <div>
-                <label class="flex items-center space-x-2">
-                  <input
-                    type="checkbox"
-                    id="includeHistory"
-                    checked
-                    class="w-4 h-4"
-                  />
-                  <span class="text-gray-700 font-medium"
-                    >Keep reply history</span
+              <div id="authStatus" class="text-right">
+                <div id="loggedInSection">
+                  <p class="text-sm text-gray-600 mb-2">
+                    Logged in as: <span id="userEmail" class="font-bold"></span>
+                  </p>
+                  <button
+                    onclick="goBackToLanding()"
+                    class="btn-secondary mr-2"
                   >
-                </label>
+                    Back to Home
+                  </button>
+                  <button onclick="logout()" class="btn-secondary">
+                    Logout
+                  </button>
+                </div>
               </div>
+            </div>
+          </div>
 
-              <button onclick="saveSettings()" class="btn-primary">
-                Save Settings
+          <!-- Main App -->
+          <div id="mainApp">
+            <!-- Tabs -->
+            <div
+              class="glass-effect rounded-t-xl shadow-xl flex border-b flex-wrap"
+            >
+              <button
+                class="tab-button active"
+                onclick="switchTab('dashboard')"
+              >
+                <i class="fas fa-chart-line mr-2"></i>Dashboard
+              </button>
+              <button class="tab-button" onclick="switchTab('rules')">
+                <i class="fas fa-rules mr-2"></i>Manage Rules
+              </button>
+              <button class="tab-button" onclick="switchTab('history')">
+                <i class="fas fa-history mr-2"></i>Reply History
+              </button>
+              <button class="tab-button" onclick="switchTab('settings')">
+                <i class="fas fa-cog mr-2"></i>Settings
               </button>
             </div>
 
-            <hr class="my-8" />
-
-            <h3 class="text-xl font-bold mb-4 text-gray-800">Data & Privacy</h3>
-            <p class="text-gray-600 mb-4 text-sm">
-              All your data is stored locally in your browser. This app does not
-              send any information to external servers.
-            </p>
-
-            <button onclick="exportData()" class="btn-secondary mr-3">
-              <i class="fas fa-download mr-2"></i>Export Data (Backup)
-            </button>
-            <button
-              onclick="clearAllData()"
-              class="bg-red-500 text-white px-4 py-2 rounded font-bold hover:bg-red-600"
+            <!-- Dashboard Tab -->
+            <div
+              id="dashboardTab"
+              class="glass-effect rounded-b-xl p-8 shadow-xl mb-8"
             >
-              <i class="fas fa-trash mr-2"></i>Clear All Data
-            </button>
+              <h2 class="text-2xl font-bold mb-6 text-gray-800">Dashboard</h2>
+
+              <div class="grid grid-cols-3 gap-4 mb-8">
+                <div
+                  class="bg-gradient-to-br from-blue-50 to-blue-100 p-6 rounded-lg"
+                >
+                  <div class="text-3xl font-bold text-blue-600" id="totalRules">
+                    0
+                  </div>
+                  <div class="text-gray-600 text-sm font-medium">
+                    Active Rules
+                  </div>
+                </div>
+                <div
+                  class="bg-gradient-to-br from-green-50 to-green-100 p-6 rounded-lg"
+                >
+                  <div
+                    class="text-3xl font-bold text-green-600"
+                    id="totalReplies"
+                  >
+                    0
+                  </div>
+                  <div class="text-gray-600 text-sm font-medium">
+                    Total Replies Sent
+                  </div>
+                </div>
+                <div
+                  class="bg-gradient-to-br from-purple-50 to-purple-100 p-6 rounded-lg"
+                >
+                  <div
+                    class="text-3xl font-bold text-purple-600"
+                    id="systemStatus"
+                  >
+                    Idle
+                  </div>
+                  <div class="text-gray-600 text-sm font-medium">
+                    System Status
+                  </div>
+                </div>
+              </div>
+
+              <div
+                class="bg-blue-50 border-l-4 border-blue-500 p-4 rounded mb-6"
+              >
+                <h3 class="font-bold text-blue-900 mb-2">Auto-Reply Status</h3>
+                <div class="flex items-center justify-between">
+                  <div>
+                    <p class="text-blue-800 text-sm">
+                      System is currently
+                      <strong id="currentStatus">OFF</strong>
+                    </p>
+                    <p class="text-blue-700 text-xs mt-1">
+                      Last check: <span id="lastCheck">Never</span>
+                    </p>
+                  </div>
+                  <label class="toggle-switch">
+                    <input
+                      type="checkbox"
+                      id="systemToggle"
+                      onchange="toggleSystem()"
+                    />
+                    <span class="slider"></span>
+                  </label>
+                </div>
+              </div>
+
+              <div id="dashboardAlerts"></div>
+
+              <button onclick="checkEmailsNow()" class="btn-primary">
+                <i class="fas fa-sync-alt mr-2"></i>Check Emails Now
+              </button>
+            </div>
+
+            <!-- Rules Tab -->
+            <div
+              id="rulesTab"
+              class="glass-effect rounded-xl p-8 shadow-xl mb-8 hidden"
+            >
+              <div
+                class="flex justify-between items-center mb-6 flex-wrap gap-4"
+              >
+                <h2 class="text-2xl font-bold text-gray-800">Manage Rules</h2>
+                <button onclick="openRuleModal()" class="btn-primary">
+                  <i class="fas fa-plus mr-2"></i>Add New Rule
+                </button>
+              </div>
+
+              <div id="rulesList"></div>
+              <div id="noRulesMessage" class="text-center py-8 text-gray-500">
+                <i class="fas fa-file-slash text-4xl mb-4 block opacity-50"></i>
+                <p>No rules created yet. Add your first rule to get started!</p>
+              </div>
+            </div>
+
+            <!-- History Tab -->
+            <div
+              id="historyTab"
+              class="glass-effect rounded-xl p-8 shadow-xl mb-8 hidden"
+            >
+              <h2 class="text-2xl font-bold mb-6 text-gray-800">
+                Reply History
+              </h2>
+              <div id="historyList"></div>
+              <div id="noHistoryMessage" class="text-center py-8 text-gray-500">
+                <i class="fas fa-inbox text-4xl mb-4 block opacity-50"></i>
+                <p>No replies sent yet</p>
+              </div>
+            </div>
+
+            <!-- Settings Tab -->
+            <div
+              id="settingsTab"
+              class="glass-effect rounded-xl p-8 shadow-xl mb-8 hidden"
+            >
+              <h2 class="text-2xl font-bold mb-6 text-gray-800">Settings</h2>
+
+              <div class="space-y-6">
+                <div>
+                  <label class="block text-sm font-bold text-gray-700 mb-2"
+                    >Check Interval (minutes):</label
+                  >
+                  <input
+                    type="number"
+                    id="checkInterval"
+                    min="1"
+                    max="60"
+                    value="5"
+                    class="w-32"
+                  />
+                  <p class="text-xs text-gray-600 mt-1">
+                    How often to check for new emails (1-60 minutes)
+                  </p>
+                </div>
+
+                <div>
+                  <label class="block text-sm font-bold text-gray-700 mb-2"
+                    >Max Replies Per Day:</label
+                  >
+                  <input
+                    type="number"
+                    id="maxRepliesPerDay"
+                    min="0"
+                    value="0"
+                    class="w-32"
+                  />
+                  <p class="text-xs text-gray-600 mt-1">
+                    Set to 0 for unlimited
+                  </p>
+                </div>
+
+                <div>
+                  <label class="flex items-center space-x-2">
+                    <input
+                      type="checkbox"
+                      id="includeHistory"
+                      checked
+                      class="w-4 h-4"
+                    />
+                    <span class="text-gray-700 font-medium"
+                      >Keep reply history</span
+                    >
+                  </label>
+                </div>
+
+                <button onclick="saveSettings()" class="btn-primary">
+                  Save Settings
+                </button>
+              </div>
+
+              <hr class="my-8" />
+
+              <h3 class="text-xl font-bold mb-4 text-gray-800">
+                Data & Privacy
+              </h3>
+              <p class="text-gray-600 mb-4 text-sm">
+                All your data is stored locally in your browser. This app does
+                not send any information to external servers.
+              </p>
+
+              <button onclick="exportData()" class="btn-secondary mr-3">
+                <i class="fas fa-download mr-2"></i>Export Data (Backup)
+              </button>
+              <button
+                onclick="clearAllData()"
+                class="bg-red-500 text-white px-4 py-2 rounded font-bold hover:bg-red-600"
+              >
+                <i class="fas fa-trash mr-2"></i>Clear All Data
+              </button>
+            </div>
           </div>
         </div>
       </div>
@@ -708,8 +1045,26 @@
         if (accessToken) {
           localStorage.setItem("gmail_access_token", accessToken);
           localStorage.setItem("gmail_token_time", Date.now());
-          window.location.hash = "";
-          location.reload();
+
+          // Fetch user profile to get email
+          fetch("https://www.googleapis.com/gmail/v1/users/me/profile", {
+            headers: { Authorization: `Bearer ${accessToken}` },
+          })
+            .then((res) => res.json())
+            .then((data) => {
+              if (data.emailAddress) {
+                localStorage.setItem(
+                  CONFIG.STORAGE_PREFIX + "userEmail",
+                  data.emailAddress,
+                );
+              }
+              window.location.hash = "";
+              location.reload();
+            })
+            .catch(() => {
+              window.location.hash = "";
+              location.reload();
+            });
         }
       }
     </script>
@@ -725,7 +1080,6 @@
       // ========== INITIALIZATION ==========
       function init() {
         loadSettings();
-        updateAuthUI();
         if (isLoggedIn()) {
           showMainApp();
           loadRules();
@@ -756,11 +1110,6 @@
         window.location.href = authUrl;
       }
 
-      function goToLogin() {
-        document.querySelector(".tab-button").click();
-        loginWithGoogle();
-      }
-
       function logout() {
         if (confirm("Are you sure you want to logout?")) {
           localStorage.removeItem("gmail_access_token");
@@ -778,41 +1127,43 @@
         return localStorage.getItem("gmail_access_token");
       }
 
-      function updateAuthUI() {
-        const loginSection = document.getElementById("loginSection");
-        const loggedInSection = document.getElementById("loggedInSection");
-        const setupGuide = document.getElementById("setupGuide");
+      // ========== NAVIGATION ==========
+      function saveClientIdAndLogin() {
+        const clientId = document.getElementById("clientIdInput").value.trim();
+        if (!clientId) {
+          alert("Please paste your Client ID first!");
+          return;
+        }
+        localStorage.setItem(CONFIG.STORAGE_PREFIX + "clientId", clientId);
+        loginWithGoogle();
+      }
 
-        if (isLoggedIn()) {
-          loginSection.classList.add("hidden");
-          loggedInSection.classList.remove("hidden");
-          setupGuide.classList.add("hidden");
+      function goToSetup() {
+        document
+          .getElementById("landingPage")
+          .scrollIntoView({ behavior: "smooth" });
+        setTimeout(() => {
+          const input = document.getElementById("clientIdInput");
+          if (input) input.focus();
+        }, 500);
+      }
+
+      function goToApp() {
+        document.getElementById("landingPage").classList.add("hidden");
+        document.getElementById("appPage").classList.remove("hidden");
+        setTimeout(() => {
           const userEmail = localStorage.getItem(
             CONFIG.STORAGE_PREFIX + "userEmail",
           );
-          if (userEmail) {
+          if (userEmail && document.getElementById("userEmail")) {
             document.getElementById("userEmail").textContent = userEmail;
           }
-        } else {
-          loginSection.classList.remove("hidden");
-          loggedInSection.classList.add("hidden");
-          setupGuide.classList.remove("hidden");
-        }
+        }, 100);
       }
 
-      // ========== CREDENTIALS ==========
-      function saveCredentials() {
-        const clientId = document.getElementById("clientId").value.trim();
-        const apiKey = document.getElementById("apiKey").value.trim();
-
-        if (!clientId) {
-          alert("Please enter your Client ID");
-          return;
-        }
-
-        localStorage.setItem(CONFIG.STORAGE_PREFIX + "clientId", clientId);
-        localStorage.setItem(CONFIG.STORAGE_PREFIX + "apiKey", apiKey);
-        alert('Credentials saved! Now click "Login with Gmail"');
+      function goBackToLanding() {
+        document.getElementById("appPage").classList.add("hidden");
+        document.getElementById("landingPage").classList.remove("hidden");
       }
 
       // ========== RULES ==========
@@ -898,7 +1249,7 @@
           .map(
             (rule) => `
                 <div class="rule-item">
-                    <div class="flex justify-between items-start mb-3">
+                    <div class="flex justify-between items-start mb-3 flex-wrap gap-2">
                         <div>
                             <h3 class="text-lg font-bold text-gray-800">${escapeHtml(rule.name)}</h3>
                             <p class="text-sm text-gray-600">Total replies sent: ${rule.totalReplies}</p>
@@ -919,7 +1270,7 @@
                         <p class="text-gray-700 whitespace-pre-wrap">${escapeHtml(rule.message).substring(0, 100)}...</p>
                     </div>
 
-                    <div class="flex space-x-2">
+                    <div class="flex space-x-2 flex-wrap gap-2">
                         <button onclick="openRuleModal('${rule.id}')" class="btn-secondary text-sm px-3 py-1">
                             <i class="fas fa-edit mr-1"></i>Edit
                         </button>
@@ -995,7 +1346,6 @@
         if (rules.length === 0) return;
 
         try {
-          // Get unread messages
           const response = await fetch(
             "https://www.googleapis.com/gmail/v1/users/me/messages?q=is:unread",
             { headers: { Authorization: `Bearer ${token}` } },
@@ -1031,10 +1381,8 @@
           const subject =
             headers.find((h) => h.name === "Subject")?.value || "";
 
-          // Check if message matches any rule
           for (const rule of rules) {
             if (matchRule(from, subject, rule)) {
-              // Check if already replied
               if (!hasReplied(msgData.id)) {
                 await sendReply(msgData, rule, token);
                 markAsReplied(msgData.id, rule.id);
@@ -1132,7 +1480,6 @@ ${replyMessage}`;
           JSON.stringify(replied),
         );
 
-        // Update rule totalReplies
         const rules = getAllRules();
         const rule = rules.find((r) => r.id === ruleId);
         if (rule) {
@@ -1146,7 +1493,8 @@ ${replyMessage}`;
 
       function addToHistory(entry) {
         if (
-          !localStorage.getItem(CONFIG.STORAGE_PREFIX + "includeHistory", true)
+          localStorage.getItem(CONFIG.STORAGE_PREFIX + "includeHistory") ===
+          "false"
         )
           return;
 
@@ -1154,7 +1502,7 @@ ${replyMessage}`;
           localStorage.getItem(CONFIG.STORAGE_PREFIX + "history") || "[]",
         );
         history.unshift(entry);
-        if (history.length > 100) history.pop(); // Keep only 100 entries
+        if (history.length > 100) history.pop();
         localStorage.setItem(
           CONFIG.STORAGE_PREFIX + "history",
           JSON.stringify(history),
@@ -1177,16 +1525,16 @@ ${replyMessage}`;
         noHistoryMessage.classList.add("hidden");
         historyList.innerHTML = history
           .map(
-            (entry, idx) => `
+            (entry) => `
                 <div class="rule-item">
-                    <div class="flex justify-between items-start">
+                    <div class="flex justify-between items-start flex-wrap gap-2">
                         <div>
                             <p class="text-sm text-gray-600"><strong>From:</strong> ${escapeHtml(entry.from)}</p>
                             <p class="text-sm text-gray-600"><strong>Subject:</strong> ${escapeHtml(entry.subject)}</p>
                             <p class="text-sm text-gray-600"><strong>Rule:</strong> ${escapeHtml(entry.rule)}</p>
                             <p class="text-xs text-gray-500 mt-2">${new Date(entry.timestamp).toLocaleString()}</p>
                         </div>
-                        <span class="status-badge status-success"><i class="fas fa-check mr-1"></i>Replied</span>
+                        <span class="status-badge status-active"><i class="fas fa-check mr-1"></i>Replied</span>
                     </div>
                 </div>
             `,
@@ -1266,7 +1614,6 @@ ${replyMessage}`;
           document.getElementById("includeHistory").checked,
         );
 
-        // Restart auto-check with new interval
         if (
           localStorage.getItem(CONFIG.STORAGE_PREFIX + "systemEnabled") ===
           "true"
@@ -1326,32 +1673,34 @@ ${replyMessage}`;
 
       // ========== TAB SWITCHING ==========
       function switchTab(tabName) {
-        // Hide all tabs
         document.querySelectorAll('[id$="Tab"]').forEach((tab) => {
           tab.classList.add("hidden");
         });
 
-        // Show selected tab
         document.getElementById(tabName + "Tab").classList.remove("hidden");
 
-        // Update active tab button
         document.querySelectorAll(".tab-button").forEach((btn) => {
           btn.classList.remove("active");
         });
         event.target.closest(".tab-button").classList.add("active");
 
-        // Load content for tabs
         if (tabName === "rules") loadRules();
-        if (tabName === "history") {
-          loadHistory();
-        }
+        if (tabName === "history") loadHistory();
         if (tabName === "dashboard") updateDashboard();
       }
 
       // ========== UI HELPERS ==========
       function showMainApp() {
-        document.getElementById("setupGuide").classList.add("hidden");
-        document.getElementById("mainApp").classList.remove("hidden");
+        document.getElementById("landingPage").classList.add("hidden");
+        document.getElementById("appPage").classList.remove("hidden");
+        const userEmail = localStorage.getItem(
+          CONFIG.STORAGE_PREFIX + "userEmail",
+        );
+        if (userEmail && document.getElementById("userEmail")) {
+          document.getElementById("userEmail").textContent = userEmail;
+        } else if (!userEmail) {
+          console.log("No user email found in localStorage");
+        }
       }
 
       function escapeHtml(text) {

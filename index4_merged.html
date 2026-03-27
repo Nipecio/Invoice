@@ -1054,7 +1054,7 @@
             .then((data) => {
               if (data.emailAddress) {
                 localStorage.setItem(
-                  "autoGmailReplier_userEmail",
+                  CONFIG.STORAGE_PREFIX + "userEmail",
                   data.emailAddress,
                 );
               }
@@ -1151,12 +1151,14 @@
       function goToApp() {
         document.getElementById("landingPage").classList.add("hidden");
         document.getElementById("appPage").classList.remove("hidden");
-        const userEmail = localStorage.getItem(
-          CONFIG.STORAGE_PREFIX + "userEmail",
-        );
-        if (userEmail) {
-          document.getElementById("userEmail").textContent = userEmail;
-        }
+        setTimeout(() => {
+          const userEmail = localStorage.getItem(
+            CONFIG.STORAGE_PREFIX + "userEmail",
+          );
+          if (userEmail && document.getElementById("userEmail")) {
+            document.getElementById("userEmail").textContent = userEmail;
+          }
+        }, 100);
       }
 
       function goBackToLanding() {
@@ -1694,8 +1696,10 @@ ${replyMessage}`;
         const userEmail = localStorage.getItem(
           CONFIG.STORAGE_PREFIX + "userEmail",
         );
-        if (userEmail) {
+        if (userEmail && document.getElementById("userEmail")) {
           document.getElementById("userEmail").textContent = userEmail;
+        } else if (!userEmail) {
+          console.log("No user email found in localStorage");
         }
       }
 
